@@ -1,54 +1,34 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React from "react"
+import Layout from "../layout/layout"
+import LinkNav from "../components/linkNav";
+import Seo from "../components/seo"
+import Perdido from "../assets/images/max-404-sec1.jpg"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const NotFoundPage = () => (
+  <Layout>
+    <Seo title="404: Not found" />
+    <section className="principal">
+      <div className="columna columna--izq">
+        <img className="principal__imagen" src={Perdido} alt="404" />
+      </div>
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+      <div className="columna columna--der">
+        <h1 className="principal__titulo">Página no encontrada</h1>
+        <p className="principal__texto principal__texto--corto">
+          La página que estás intentando ver, no existe o ha sido cambiada de
+          lugar. Usa el menú de navegación para volver al sitio o haz click en
+          el botón de abajo para volver al inicio.
+        </p>
+        <LinkNav
+            estilo="principal__boton"
+            text="Ir al inicio"
+            to="/"
+          />
+      </div>
+    </section>
 
-// markup
-const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <section className="perdido"></section>
+  </Layout>
+)
 
 export default NotFoundPage

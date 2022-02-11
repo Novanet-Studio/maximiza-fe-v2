@@ -1,0 +1,447 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+/*------Contenedores princiales------*/
+
+#___gatsby {
+  @extend .flex;
+  justify-content: center;
+}
+
+main {
+  transition: 0.5s;
+}
+
+.contenedor {
+  @extend .flex;
+  min-height: 100vh;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1.5s;
+  margin: 0 4vw 3vh;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.principal {
+  @extend .flex;
+  align-items: center;
+
+  &__logo {
+    width: 25vw;
+    padding-bottom: 2vh;
+  }
+
+  // &__titulo {}
+
+  &__imagen {
+    width: 100%;
+  }
+  &__texto {
+    font-weight: 400;
+    color: $gris1;
+  }
+  &__boton {
+    cursor: pointer;
+    font-weight: 300;
+    color: $blanco1;
+    border: none;
+    background: $verde1;
+    display: inline-block;
+  }
+  /* Por revisar */
+  &--img-gris {
+    filter: grayscale(100%);
+  }
+}
+
+.columna {
+  &--izq {
+    text-align: right;
+    order: 1;
+  }
+  &--der {
+    text-align: left;
+    order: 2;
+  }
+}
+
+.cta-informacion {
+  @extend .flex;
+  justify-content: center;
+  margin: 6vh 0 10vh 0;
+  &__mensaje {
+    padding: 0.5vh 3vh 0 0;
+  }
+  &__boton {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1.5vh 2vh;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    background: $verde1;
+    color: $blanco1;
+  }
+}
+
+/* Botón menú mobile */
+.mobileMenu {
+  display: none;
+}
+
+h1 {
+  font-weight: 900;
+  color: $verde1;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 900;
+  color: $negro1;
+}
+
+h3 {
+  font-weight: 700;
+  color: $gris4;
+}
+
+h4 {
+  font-weight: 700;
+}
+
+.descripcion {
+  color: $gris2;
+  font-weight: 400;
+}
+
+ul {
+  @extend .flex;
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+
+@include min-media(320px, portrait) {
+  h1 {
+    font-size: 1.27rem;
+    margin-bottom: 0.5vh;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin-bottom: 2vh;
+  }
+
+  h3 {
+    font-size: 1.07rem;
+    line-height: 1.3rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .descripcion {
+    font-size: 0.82rem;
+    line-height: 1.2rem;
+  }
+
+  .principal {
+    /* Por revisar */
+    .logo--interno {
+      margin-bottom: 2vh;
+    }
+
+    &__logo {
+      display: none;
+    }
+
+    &__texto {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      &--corto {
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+      }
+    }
+    &__boton {
+      font-size: 0.8rem;
+      padding: 1.8vh 2vh;
+      margin-top: 2vh;
+    }
+  }
+
+  .columna {
+    width: 100%;
+    padding: 1.5vh 0;
+
+    &--izq {
+      text-align: left;
+    }
+    &--der {
+      text-align: left;
+    }
+  }
+  .mobileMenu {
+    display: block;
+    position: absolute;
+    top: 4vh;
+    right: 4vh;
+    z-index: 2;
+    border: 0;
+    background-color: transparent;
+    font-size: 1.6rem;
+    color: $verde1;
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@include min-media(568px, landscape) {
+  .principal {
+    &__texto {
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+      &--corto {
+        font-size: 0.75rem;
+        line-height: 1.1rem;
+      }
+    }
+    &__boton {
+      font-size: 0.7rem;
+      padding: 2vh;
+      margin-top: 2vh;
+    }
+  }
+
+  .columna {
+    width: 50%;
+
+    &--izq {
+      padding-right: 2vw;
+      text-align: right;
+    }
+    &--der {
+      padding-left: 2vw;
+    }
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5vh;
+  }
+
+  h2 {
+    font-size: 1.11rem;
+    line-height: 1.5rem;
+    margin-bottom: 2vh;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    line-height: 1.3rem;
+  }
+
+  h4 {
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+  }
+
+  .descripcion {
+    font-size: 0.82rem;
+    line-height: 1.2rem;
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@include min-media(768px, portrait) {
+  .principal {
+    // Por revisar
+    .logo--interno {
+      margin-bottom: 1vh;
+    }
+
+    &__texto {
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      &--corto {
+        font-size: 0.95rem;
+        line-height: 1.3rem;
+      }
+    }
+
+    &__boton {
+      padding: 1vh 1.5vh;
+      margin-top: 1vh;
+    }
+  }
+
+  .columna {
+    &--izq {
+      width: 50%;
+      padding: 0 2vw 0 0;
+      text-align: right;
+    }
+    &--der {
+      width: 50%;
+      padding: 0 0 0 2vw;
+    }
+  }
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1vh;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.8rem;
+  }
+
+  .descripcion {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@include min-media(1024px, landscape) {
+  .principal {
+    &__texto {
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+      &--corto {
+        font-size: 0.95rem;
+        line-height: 1.4rem;
+      }
+    }
+
+    &__boton {
+      font-size: 0.9rem;
+    }
+  }
+  h1 {
+    font-size: 1.27rem;
+    margin-bottom: 0.5vh;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .descripcion {
+    font-size: 0.95rem;
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@include min-media(1280px) {
+  .principal {
+    min-height: 46vh;
+    // Por revisar
+    .logo--interno {
+      margin-bottom: 2.2vh;
+    }
+
+    &__texto {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      &--corto {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+      }
+    }
+
+    &__boton {
+      font-size: 1rem;
+      padding: 1.8vh 2vh;
+      margin-top: 2vh;
+    }
+
+    &__imagen {
+      width: 100%;
+    }
+  }
+
+  .columna {
+    &--izq {
+      width: 50%;
+      padding-right: 2vw;
+      text-align: right;
+    }
+    &--der {
+      width: 50%;
+      padding-left: 2vw;
+      text-align: left;
+    }
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+    margin-bottom: 2.5vh;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    line-height: 1.7rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.8rem;
+  }
+
+  h5 {
+    font-size: 1.05rem;
+    line-height: 1.3rem;
+    padding-bottom: 0.5vh;
+  }
+
+  .descripcion {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
+  .contenedor {
+    width: 1280px;
+  }
+}

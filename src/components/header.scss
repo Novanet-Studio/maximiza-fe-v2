@@ -1,0 +1,279 @@
+.header {
+    width: 50%;
+    justify-self: flex-start;
+  
+    &__logo {
+      visibility: hidden;
+    }
+  
+    &__logo-interno {
+      justify-self: flex-start;
+    }
+  }
+  
+  .nav {
+    @extend .flex;
+    width: 50%;
+    flex-direction: row;
+    justify-self: flex-end;
+    z-index: 10;
+  
+    &__contenido {
+      @extend .flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    &__grupo {
+      width: 33.3333333%;
+      @extend .flex;
+      cursor: pointer;
+      font-weight: 800;
+      text-decoration: none;
+      position: relative;
+  
+      p {
+        color: $verde1;
+      }
+  
+      &:hover .nav__dropdown {
+        transition: 0.25s;
+        opacity: 1;
+        background-color: $blanco2;
+        border-bottom: 1px solid $verde1;
+      }
+  
+      & .nav__dropdown {
+        border-bottom: 1px solid $verde1;
+      }
+    }
+  
+    &__bala {
+      @extend .flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    &__texto {
+      @extend .flex;
+      flex-direction: column;
+      justify-content: center;
+      color: $gris3 !important;
+    }
+  
+    &__dropdown {
+      @extend .flex;
+      flex-direction: column;
+      opacity: 0;
+      position: absolute;
+      left: 0;
+    }
+  
+    &__link {
+      color: $gris3;
+      font-weight: 500;
+      &:hover {
+        font-weight: 700;
+        color: $verde1;
+      }
+    }
+  }
+  /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+  
+  @include min-media(320px, portrait) {
+    .header {
+      padding: 2vh 0;
+      position: relative;
+      &__logo {
+        visibility: visible;
+      }
+    }
+  }
+  
+  @include min-max-media(320px, 767px, portrait) {
+  
+    .nav {
+      margin-top: 10vh;
+      padding: 1.5vh 0 1.5vh 2.5vh;
+      position: absolute;
+      background-color: $blanco2;
+  
+      &--overlay {
+        /* Height & width depends on how you want to reveal the overlay (see JS below) */
+        height: 55vh;
+        width: 0;
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        right: -3.5vw;
+        top: 0;
+        overflow-x: hidden; /* Disable horizontal scroll */
+        transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+      }
+  
+      &__contenido {
+        position: relative;
+        width: 100%;
+        padding-top: 1.5vh;
+      }
+  
+      &__grupo {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 90%;
+      }
+  
+      &__bala {
+        position: absolute;
+        font-size: 1.5rem;
+        margin-top: -1vh;
+      }
+  
+      &__texto {
+        overflow: hidden;
+        white-space: nowrap;
+        padding-left: 1.8vh;
+        padding-bottom: 1vh;
+        font-size: 0.8rem;
+      }
+  
+      &__dropdown {
+        opacity: 1;
+        position: relative;
+      }
+  
+      &__link {
+        font-size: 0.73rem;
+        line-height: 1.2rem;
+        padding: 0 0 1vh 1vw;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+  @include min-media(568px, landscape) {
+    .header {
+      padding: 3vh 0;
+      &__logo,
+      &__logo-interno {
+        visibility: visible;
+        width: 20vw;
+      }
+  
+      &__logo {
+        visibility: hidden;
+      }
+    }
+  
+    .nav {
+      padding-left: 2vw;
+  
+      &__bala {
+        font-size: 1rem;
+        padding-bottom: 0.4vh;
+      }
+  
+      &__texto {
+        padding-left: 0.5vh;
+        font-size: 0.6rem;
+      }
+  
+      &__dropdown {
+        width: 100%;
+        margin-top: 12.5vh;
+        padding: 1.5vh;
+      }
+  
+      &__link {
+        font-size: 0.58rem;
+        line-height: 1.2rem;
+        padding: 0.5vh 0;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+  @include min-media(768px, portrait) {
+    .header {
+      &__logo,
+      &__logo-interno {
+        width: 20vw;
+      }
+    }
+  
+    .nav {
+      padding-left: 2vw;
+  
+      &__texto {
+        font-size: 0.8rem;
+        padding-left: 0.5vw;
+      }
+  
+      &__dropdown {
+        margin-top: 6vh;
+        width: 100%;
+      }
+  
+      &__link {
+        font-size: 0.75rem;
+        line-height: 1.8rem;
+        padding: 0.3vh 1vw;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+  @include min-media(1024px, landscape) {
+    .nav {
+  
+      &__bala {
+        font-size: 1.2rem;
+      }
+  
+      &__texto {
+        font-size: 0.85rem;
+      }
+  
+      &__dropdown {
+        margin-top: 10vh;
+      }
+  
+      &__link {
+        font-size: 0.7rem;
+      }
+  
+    }
+  }
+  
+  /*-------------------------------------------- Desktop responsive --------------------------------------------*/
+  // @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  @include min-media(1280px) {
+    .header {
+      &__imagen {
+        width: 15vw;
+      }
+    }
+  
+    .nav {
+  
+      &__bala {
+        font-size: 2rem;
+      }
+  
+      &__texto {
+        font-size: 1.1rem;
+      }
+  
+      &__dropdown {
+        padding: 1vh;
+        width: 100%;
+        margin-top: 12vh;
+      }
+  
+      &__link {
+        padding-left: 1vw;
+        font-size: 0.85rem;
+        line-height: 1.8rem;
+      }
+    }
+  }

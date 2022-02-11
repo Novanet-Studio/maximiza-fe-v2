@@ -1,0 +1,142 @@
+.footer {
+    @extend .flex;
+    align-items: center;
+  
+    &__rrss {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $blanco1;
+      cursor: pointer;
+      background-color: $verde1;
+    }
+  
+    &__link {
+      color: $blanco1;
+    }
+  
+    &__derechos {
+      color: $gris2;
+      font-weight: 400;
+    }
+  }
+  
+  /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+  
+  @include min-media(320px, portrait) {
+    .footer {
+      margin-top: 4vh;
+  
+      &__rrss {
+        width: 3.5vh;
+        height: 3.5vh;
+        margin-right: 2vh;
+        svg {
+          width: 0.7rem !important;
+        }
+      }
+  
+      &__derechos {
+        padding-top: 1vh;
+        font-size: 0.7rem;
+        line-height: 1.2rem;
+      }
+  
+      &__imagen {
+        width: 20vw;
+        padding-left: 0.4vw;
+        margin-bottom: -0.9vh;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+  @include min-media(568px, landscape) {
+    .footer {
+      &__rrss {
+        width: 6vh;
+        height: 6vh;
+        margin-right: 2vh;
+        svg {
+          width: 0.63rem !important;
+        }
+      }
+  
+      &__derechos {
+        padding-top: 0;
+        font-size: 0.66rem;
+        line-height: 1.2rem;
+      }
+  
+      &__imagen {
+        width: 9vw;
+        margin-bottom: -1vh;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+  @include min-media(768px, portrait) {
+    .footer {
+      &__rrss {
+        width: 2.8vh;
+        height: 2.8vh;
+        margin-right: 1.5vh;
+        svg {
+          width: 2rem !important;
+        }
+      }
+  
+      &__derechos {
+        font-size: 0.85rem;
+        padding-top: 0;
+      }
+  
+      &__imagen {
+        width: 11vw;
+        margin-bottom: -0.5vh;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+  @include min-media(1024px, landscape) {
+    .footer {
+      &__rrss {
+        width: 3vh;
+        height: 3vh;
+        svg {
+          width: 0.63rem !important;
+        }
+      }
+  
+      &__imagen {
+        width: 6vw;
+        margin-bottom: -0.5vh;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Desktop responsive --------------------------------------------*/
+  
+  @include min-media(1280px) {
+    .footer {
+      &__rrss {
+        width: 4.5vh;
+        height: 4.5vh;
+        svg {
+          width: 2.3rem !important;
+        }
+      }
+  
+      &__derechos {
+        font-size: 0.9rem;
+      }
+  
+      &__imagen {
+        padding-left: 0.4vw;
+        margin-bottom: -0.8vh;
+      }
+    }
+  }
+  

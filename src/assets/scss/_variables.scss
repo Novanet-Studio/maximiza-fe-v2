@@ -1,0 +1,44 @@
+// Las variables comienzan con "$"
+
+/* Colores */
+$verde1: #00735f;
+
+$verde2: #007e43;
+
+$verde3: #09b333;
+
+$verde4: #2d7300;
+
+$verde5: #04661d;
+
+$verde6: #00a385;
+
+$negro1: #050505;
+
+$negro2: #000;
+
+$gris1: #707070;
+
+$gris2: #5f5f5f;
+
+$gris3: #737474;
+
+$gris4: #3c3c3c;
+
+$gris5: #d1d1d1;
+
+$blanco1: #fff;
+
+$blanco2: #f1f1f1;
+
+/* Contenedores principales */
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.centro {
+  justify-content: center;
+  align-content: center;
+}

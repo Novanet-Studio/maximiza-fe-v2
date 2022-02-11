@@ -1,31 +1,97 @@
+require("dotenv").config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
-      title: `maximiza-be-v2`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Maximiza - Asesoría de inversión`,
+    description: `Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.`,
+    author: `@novanetstudio`,
+    image: `https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_inicio_289286fe23.jpg`,
+    type: "website",
+    siteUrl: "https://maximiza.com.ve",
+    titleTemplate: " Maximiza",
+    twitterUsername: "@novanetstudio",
   },
-  plugins: ["gatsby-plugin-sass", {
-    resolve: 'gatsby-plugin-google-analytics',
-    options: {
-      "trackingId": "G-4W17JXKS6P"
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-transformer-remark", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        additionalData: `@import "${__dirname}/src/assets/scss/styles";`,
+      },
     },
-    __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "G-4W17JXKS6P",
+      },
     },
-    __key: "pages"
-  }]
+    `gatsby-plugin-transition-link`,
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sitemap",
+    "gatsby-transformer-remark",
+    "gatsby-plugin-image",
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {       
+          formats: [`auto`, `webp`, `avif`],
+          placeholder: `blurred`,
+          quality: 100,
+          breakpoints: [416, 736, 1024, 1280, 1366],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Maximiza`,
+        short_name: `Maximiza`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#00735f`,
+        display: `standalone`,
+        orientation: `portrait`,
+        icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL,
+        contentTypes: ["articulo"],
+        singleTypes: [
+          "blog",
+          "contact",
+          "educacion",
+          "empresa",
+          "home",
+          "legal",
+          "servicios",
+          "private-equity",
+          "responsabilidad",
+          "medios",
+        ],
+        queryLimit: 1000,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: "./src/assets/images/",
+      },
+      __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: "./src/pages/",
+      },
+      __key: "pages",
+    },
+  ],
 };

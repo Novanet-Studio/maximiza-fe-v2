@@ -1,0 +1,247 @@
+/* The Modal (background) */
+.modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 50; /* Sit on top */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 200ms;
+  
+    &__contenido {
+      background-color: $blanco1;
+      position: relative;
+    }
+  
+    &__cuerpo {
+      @extend .flex;
+  
+      /* reactMarkdown */
+      a {
+        color: $verde1;
+        font-weight: 500;
+      }
+      h4 {
+        padding-top: 2vh;
+      }
+      ul {
+        list-style-type: disc;
+        list-style-position: inside;
+        margin-top: 2vh;
+        li {
+          width: 100%;
+          line-height: 1.6rem;
+        }
+      }
+    }
+  
+    &__titulo {
+      @extend .flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      margin-bottom: 0;
+    }
+  
+    &__imagen {
+      height: auto;
+      background-color: $verde1;
+    }
+  
+    &__boton {
+      cursor: pointer;
+      position: absolute;
+      background-color: $gris5;
+      color: $gris4;
+      border: 0;
+      font-weight: 600;
+    }
+  }
+  
+  @keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+  
+  @include min-media(320px, portrait) {
+    .modal {
+      &__contenido {
+        margin: 1% auto; /* 15% from the top and centered */
+        padding: 2vh;
+        top: 3%;
+        width: 90vw;
+      }
+  
+      &__titulo {
+        padding-left: 3vw;
+        width: 88%;
+      }
+  
+      &__cuerpo {
+        /* reactMarkdown */
+        p {
+          padding-top: 1.5vh;
+          font-size: 0.8rem;
+          line-height: 1.3rem;
+        }
+        ul {
+          margin-top: 2vh;
+          list-style: circle;
+          li {
+            font-size: 0.8rem;
+            line-height: 1.4rem;
+            margin-bottom: 1vh;
+            list-style: disc !important;
+          }
+        }
+      }
+  
+      &__imagen {
+        width: 12%;
+      }
+  
+      &__boton {
+        right: 2vh;
+        top: 2vh;
+        font-size: 1.5rem;
+        padding: 0 1.3vw;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+  @include min-media(568px, landscape) {
+    .modal {
+      &__contenido {
+        margin: 1% auto; /* 15% from the top and centered */
+        padding: 4vh;
+        top: 3%;
+        width: 85vw;
+      }
+  
+      &__titulo {
+        padding-left: 2vw;
+        width: 94%;
+      }
+  
+      &__cuerpo {
+        /* reactMarkdown */
+        p {
+          padding-top: 3vh;
+          font-size: 0.8rem;
+          line-height: 1.1rem;
+        }
+        ul {
+          margin-top: 2vh;
+          li {
+            font-size: 0.8rem;
+            line-height: 1.1rem;
+            margin-bottom: 1.5vh;
+          }
+        }
+      }
+  
+      &__imagen {
+        width: 6%;
+      }
+  
+      &__boton {
+        right: 2vh;
+        top: 2vh;
+        font-size: 1.5rem;
+        padding: 0 1.3vw;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+  @include min-media(768px, portrait) {
+    .modal {
+      &__titulo {
+        padding-left: 2vw;
+        padding-top: 0;
+        width: 90%;
+      }
+  
+      &__cuerpo {
+        /* reactMarkdown */
+        p {
+          font-size: 0.9rem;
+          padding-top: 1vh;
+          line-height: 1.6rem;
+        }
+        ul {
+          margin-top: 2vh;
+          li {
+            font-size: 0.9rem;
+            line-height: 1.3rem;
+          }
+        }
+      }
+  
+      &__imagen {
+        width: 6%;
+      }
+  
+      &__boton {
+        padding: 0 0.8vw;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+  @include min-media(1024px, landscape) {
+    .modal {
+      &__cuerpo {
+        /* reactMarkdown */
+        p {
+          font-size: 0.9rem;
+          line-height: 1.2rem;
+        }
+        ul {
+          li {
+            font-size: 0.9rem;
+            line-height: 1.2rem;
+          }
+        }
+      }
+  
+      &__boton {
+        font-size: 2rem;
+        padding: 0 0.5vw;
+      }
+    }
+  }
+  
+  /*-------------------------------------------- Desktop responsive --------------------------------------------*/
+  @include min-media(1280px) {
+    .modal {
+      &__contenido {
+        width: 70vw;
+      }
+  
+      &__titulo {
+        padding-left: 1vw;
+      }
+  
+      &__imagen {
+        width: 5%;
+      }
+    }
+  }
+  

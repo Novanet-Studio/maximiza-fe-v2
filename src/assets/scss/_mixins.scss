@@ -1,0 +1,17 @@
+@mixin min-media($size, $orientation: "") {
+  @if $orientation == "" {
+    @media only screen and (min-device-width: #{$size}) and (-webkit-min-device-pixel-ratio: 1) {
+      @content;  
+    }
+  } @else {
+    @media only screen and (min-device-width: #{$size}) and (-webkit-min-device-pixel-ratio: 1) and (orientation: #{$orientation}) {
+      @content;
+    }
+  }
+}
+
+@mixin min-max-media($min, $max, $orientation) {
+  @media only screen and (min-device-width: #{$min}) and (max-device-width: #{$max}) and (-webkit-min-device-pixel-ratio: 1) and (orientation: #{$orientation}) {
+    @content;
+  }
+}
