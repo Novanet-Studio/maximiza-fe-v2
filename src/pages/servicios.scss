@@ -1,0 +1,400 @@
+
+/* Servicios
+========================================================================== */
+
+/*------Inversionista------*/
+.inversionista {
+  &__grupo {
+    @extend .flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  &__cabecera {
+    position: relative;
+  }
+  &__titulo {
+    text-align: right;
+    font-weight: 900;
+    color: $blanco1;
+    z-index: 3;
+    text-shadow: 2px 2px 2px $negro2;
+  }
+  &__imagen {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute !important;
+    z-index: -5;
+  }
+  &__contenido {
+    @extend .flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  &__item {
+    @extend .flex;
+    background: $blanco2;
+    position: relative;
+    &:hover {
+      z-index: 10;
+      cursor: pointer;
+      .inversionista__dropdown {
+        opacity: 1;
+        transition: all 0.5s;
+      }
+    }
+  }
+  &__subtitulo {
+    font-weight: 300;
+  }
+  &__icono {
+    background: $verde1;
+    color: $blanco1;
+  }
+  &__flecha {
+    position: absolute;
+  }
+  &__dropdown {
+    @extend .flex;
+    width: 100%;
+    flex-direction: column;
+    background: $blanco2;
+    position: absolute;
+    opacity: 0;
+    z-index: 5;
+    box-shadow: 3px 3px 5px #88888863;
+  }
+  &__boton {
+    cursor: pointer;
+    margin-top: 2vh;
+    background-color: $blanco2;
+    border: $gris2 1px solid;
+  }
+  &__descripcion {
+    a {
+      color: $verde1;
+    }
+  }
+}
+
+.comisiones {
+  @extend .flex;
+  justify-content: center;
+  margin-bottom: 6em ;
+
+  &__titulo {
+    width: 100%;
+  }
+
+  &__lista {
+    @extend .flex;
+    width: 90%;
+
+    &__item {
+      @extend .flex;
+      width: 100%;
+
+      &:nth-child(1) {
+        border-bottom: 2px solid $gris5;
+      }
+
+      &:nth-child(2) {
+        background-color: $blanco2;
+      }
+
+      &:nth-child(3) {
+        border-top: 2px solid $gris5;
+      }
+
+      h4,
+      p {
+        width: 50%;
+        padding: 1em;
+      }
+
+      h4 {
+        color: $verde1;
+        border-right: 2px solid $gris5;
+      }
+
+      p {
+        @extend .flex;
+        align-content: center;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+@include min-media(320px, portrait) {
+  /*------Inversionista------*/
+  .inversionista {
+    margin-bottom: 8vh;
+    &__grupo {
+      margin-top: 7vh;
+    }
+    &__cabecera {
+      width: 100%;
+      height: 28vh;
+      position: relative;
+    }
+    &__imagen {
+      height: 24vh;
+    }
+    &__titulo {
+      padding: 2vh;
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+    }
+    &__item {
+      width: 100%;
+      height: 5.85vh;
+      margin-bottom: 3vh;
+    }
+    &__subtitulo {
+      margin-top: 1vh;
+    }
+    &__flecha {
+      width: 3vw;
+      right: 3vw;
+      top: 2vh;
+    }
+    &__icono {
+      width: 10%;
+      padding: 1vh;
+      margin-right: 2vh;
+    }
+    &__dropdown {
+      padding: 2vh;
+      font-size: 0.8rem;
+      line-height: 1.3rem;
+    }
+    &__boton {
+      margin-top: 2vh;
+      padding: 0.5vh;
+    }
+  }
+
+  .comisiones {
+    margin-bottom: 4em ;
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@include min-media(568px, landscape) {
+  /*------Inversionista------*/
+  .inversionista {
+    margin-top: 20vh;
+    margin-bottom: 24vh;
+    &__grupo {
+      &:last-child {
+        margin-top: 20vh;
+        .inversionista__cabecera {
+          order: 2;
+          .inversionista__titulo {
+            text-align: right;
+          }
+        }
+        // --- Revisar --- //
+        .inversionista__contenido {
+          .inversionista__contenido {
+            order: 1;
+          }
+        }
+      }
+    }
+    &__cabecera {
+      width: 35%;
+    }
+    &__imagen {
+      height: auto;
+    }
+    &__titulo {
+      padding: 3vh 2vh;
+      position: inherit;
+    }
+    &__contenido {
+      width: 64%;
+    }
+    &__item {
+      width: 100%;
+      height: 8.4vh;
+      margin-top: 0;
+      margin-bottom: 1.29vh;
+    }
+    &__flecha {
+      width: 2vw;
+      right: 2vw;
+      top: 3vh;
+    }
+    &__subtitulo {
+      margin-top: 1.3vh;
+    }
+    &__icono {
+      width: 8%;
+      padding: 1vh;
+      margin-right: 2vh;
+    }
+    &__dropdown {
+      padding: 2vh;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+    }
+    &__texto {
+      font-size: 0.85rem;
+    }
+    &__boton {
+      margin-top: 2vh;
+      padding: 0.5vh;
+      font-size: 0.75rem;
+    }
+  }
+
+  .comisiones {
+    margin-bottom: 4em ;
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@include min-media(768px, portrait) {
+  /*------Inversionista------*/
+  .inversionista {
+    margin-bottom: 12vh;
+    &__grupo {
+      &:last-child {
+        .inversionista__cabecera {
+          order: 2;
+          .inversionista__titulo {
+            text-align: right;
+          }
+        }
+        .inversionista__contenido {
+          .inversionista__contenido {
+            order: 1;
+          }
+        }
+      }
+    }
+    &__cabecera {
+      width: 47%;
+    }
+    &__imagen {
+      height: auto;
+    }
+    &__titulo {
+      padding: 3vh 2vh;
+      position: inherit;
+    }
+    &__contenido {
+      width: 50%;
+    }
+    &__item {
+      width: 100%;
+      height: 4.5vh;
+      margin-top: 0;
+      margin-bottom: 1.29vh;
+    }
+    &__flecha {
+      width: 2vw;
+      right: 2vw;
+      top: 1.7vh;
+    }
+    &__subtitulo {
+      margin-top: 1vh;
+      font-size: 1rem;
+    }
+    &__icono {
+      width: 12%;
+      padding: 1vh;
+      margin-right: 1vh;
+    }
+    &__dropdown {
+      padding: 2vh;
+      font-size: 0.85rem;
+      line-height: 1.4rem;
+    }
+    &__boton {
+      margin-top: 2vh;
+      padding: 0.5vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@include min-media(1024px, landscape) {
+  /*------Inversionista------*/
+  .inversionista {
+    margin-bottom: 15vh;
+    &__grupo {
+      margin-top: 14vh;
+    }
+    &__cabecera {
+      width: 23%;
+    }
+    &__imagen {
+      height: 31vh;
+    }
+    &__titulo {
+      bottom: 4px;
+    }
+    &__contenido {
+      width: 74%;
+      margin-top: 7vh;
+    }
+    &__item {
+      width: 48%;
+      height: 5.85vh;
+      margin-top: 1.25vh;
+    }
+    &__subtitulo {
+      margin-top: 1.5vh;
+    }
+    &__flecha {
+      width: 1.1vw;
+      right: 1vw;
+      top: 2.5vh;
+    }
+    &__icono {
+      width: 13%;
+      margin-right: 1vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@include min-media(1280px) {
+  /*------Inversionista------*/
+  .inversionista {
+    &__grupo {
+      margin-top: 10vh;
+    }
+    &__item {
+      margin-top: 1.8vh;
+    }
+    &__cabecera {
+      width: 20%;
+      height: 16vw;
+    }
+    &__imagen {
+      height: auto;
+    }
+    &__subtitulo {
+      margin-top: 1.2vh;
+      font-size: 1rem;
+    }
+    &__dropdown {
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+    }
+    &__texto {
+      font-size: 0.95rem;
+    }
+    &__flecha {
+      top: 2vh;
+    }
+    &__icono {
+      width: 10%;
+    }
+  }
+}

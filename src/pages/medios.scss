@@ -1,0 +1,28 @@
+.medios {
+  @extend .flex;
+  justify-content: center;
+
+  /* ------------- Mobile Portrait ------------- */
+  @include min-media(320px, portrait) {
+    margin-top: 3vh;
+  }
+
+  /* ------------- Mobile Landscape ------------- */
+  @include min-media(568px, landscape) {
+    margin-top: 7vh;
+  }
+
+  /* ------------- Tablet Portrait ------------- */
+  @include min-media(768px, portrait) {
+    margin-top: 7vh;
+  }
+
+  /* ------------- Tablet Landscape ------------- */
+  @include min-media(1024px, landscape) {
+  }
+
+  /* ------------- Desktop Responsive ------------- */
+  @include min-media(1280px) {
+    margin-top: 14vh;
+  }
+}

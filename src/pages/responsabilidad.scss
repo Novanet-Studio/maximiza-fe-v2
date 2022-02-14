@@ -1,0 +1,280 @@
+
+/* Responsabilidad
+========================================================================== */
+
+.contribuciones {
+  @extend .flex;
+  justify-content: center;
+  &__lista {
+    @extend .flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    padding-bottom: 1vh;
+    border-bottom: solid 2px $gris5;
+    &:hover {
+      z-index: 10;
+      cursor: pointer;
+      .contribuciones__descripcion {
+        opacity: 1;
+        transition: all 0.5s;
+      }
+    }
+  }
+  &__titulo {
+    color: $verde1;
+  }
+  &__descripcion {
+    border-bottom: $verde1 2px solid;
+  }
+  &__icono {
+    color: $verde1;
+  }
+
+  &__titulo {
+    width: 100%;
+    font-weight: 800;
+  }
+  &__descripcion {
+    margin-top: 4vh;
+    padding: 2.5vh;
+    position: absolute;
+    opacity: 0;
+    background: $blanco2;
+    z-index: -5;
+  }
+  &__flecha {
+    position: absolute;
+    right: 1vw;
+    top: 1vh;
+    cursor: pointer;
+  }
+}
+
+.causas {
+  @extend .flex;
+  justify-content: center;
+  &__titulo {
+    width: 100%;
+  }
+  .descripcion a {
+    color: $verde1;
+  }
+  &__lista {
+    justify-content: space-between;
+  }
+  &__item {
+    @extend .flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+  }
+  &__texto {
+    color: $gris2;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+// @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(320px, portrait) {
+  .contribuciones {
+    margin-top: 6vh;
+    width: 100%;
+    &__lista {
+      margin-top: 2vh;
+    }
+    &__item {
+      width: 100%;
+      margin-bottom: 7vh;
+    }
+    &__descripcion {
+      font-size: 0.85rem;
+      line-height: 1.3rem;
+      padding-top: 1.5vh;
+      padding-bottom: 2vh;
+    }
+    &__flecha {
+      width: 3vw;
+    }
+  }
+
+  .causas {
+    margin-top: 6vh;
+    &__lista {
+      margin-top: 4vh;
+    }
+    &__item {
+      margin-bottom: 7vh;
+    }
+    &__imagen {
+      margin: 0 auto;
+      width: 22vw;
+      height: 22vw;
+    }
+    &__texto {
+      padding-top: 1vh;
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+// @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(568px, landscape) {
+  .contribuciones {
+    margin: 15vh 0;
+    &__lista {
+      margin: 3vh 0 0;
+    }
+    &__item {
+      margin: 2vh 1.5vw 0;
+      flex: 1 1;
+    }
+    &__titulo {
+      font-size: 0.7rem;
+    }
+    &__descripcion {
+      margin-top: 7vh;
+      font-size: 0.55rem;
+      line-height: 0.8rem;
+      padding: 2vh;
+    }
+    &__flecha {
+      width: 1.3vw;
+      top: 2.5vh;
+    }
+  }
+
+  .causas {
+    margin-top: 18vh;
+    margin-bottom: 18vh;
+    &__lista {
+      margin: 10vh 0 0;
+      width: 100%;
+    }
+    &__item {
+      width: 22.5%;
+      align-items: center;
+    }
+    &__imagen {
+      width: 20vh;
+      height: 20vh;
+    }
+    &__texto {
+      margin-top: 2vh;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+// @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(768px, portrait) {
+  .contribuciones {
+    margin: 10vh 0 0 0;
+    &__lista {
+      margin-top: 3vh;
+    }
+    &__item {
+      margin: 0 4vw 6vw;
+    }
+    &__descripcion {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding-bottom: 2vh;
+    }
+    &__flecha {
+      width: 2vw;
+    }
+  }
+
+  .causas {
+    margin-top: 6vh;
+    &__lista {
+      width: 100%;
+      margin-top: 4vh;
+    }
+    &__item {
+      width: 22.5%;
+      align-items: center;
+      margin-bottom: 5vh;
+    }
+    &__imagen {
+      margin: 0 auto;
+      width: 12.5vw;
+      height: 12.5vw;
+    }
+    &__texto {
+      width: 75%;
+      font-size: 0.9rem;
+      line-height: 1.1rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+// @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(1024px, landscape) {
+  .contribuciones {
+    margin: 10vh 0 0;
+    &__item {
+      margin: 0 1.5vw 0;
+    }
+    &__titulo {
+      font-size: 1rem;
+    }
+    &__descripcion {
+      margin-top: 4vh;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+    }
+    &__flecha {
+      width: 1vw;
+      top: 1vh;
+    }
+  }
+
+  .causas {
+    margin-top: 14vh;
+    margin-bottom: 8vh;
+    &__lista {
+      margin: 5vh 0;
+    }
+    &__imagen {
+      width: 13vh;
+      height: 13vh; 
+    }
+    &__texto {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+// @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+@include min-media(1280px) {
+  .contribuciones {
+    &__titulo {
+      font-size: 1.25rem;
+    }
+    &__descripcion {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+    }
+  }
+  .causas {
+    &__texto {
+      font-size: 1.1rem;
+    }
+  }
+}

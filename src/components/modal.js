@@ -1,6 +1,7 @@
 import React from "react"
-import ReactMarkdown from "react-markdown"
-import Img from "gatsby-image"
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import "./modal.scss"
 
 const Modal = ({ data, id, onClose, imageFieldName }) =>
@@ -14,18 +15,19 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
             </button>
             <div className="modal__body modal__cuerpo">
               {imageFieldName === undefined || (
-                <Img
+                <GatsbyImage
                   className="modal__imagen"
-                  fluid={item[imageFieldName].childImageSharp.fluid}
-                  title={item.titulo}
-                  alt={""}
+                  image={getImage(item[imageFieldName].localFile)}
+                  title={item.seo_imagen.titulo}
+                  alt={item.seo_imagen.texto_alternativo}
                 />
               )}
               <h2 className="modal__titulo">{item.titulo}</h2>
               <ReactMarkdown
-                className="modal__descripcion"
-                source={item.contenido}
-                escapeHtml={false}
+                className="modal__descripcion"               
+                children={item.contenido}
+                remarkPlugins={[remarkGfm]}
+                skipHtml={false}
               />
             </div>
           </div>

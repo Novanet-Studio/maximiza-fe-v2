@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
         ☰
       </button>
       <HeaderIndex />
-     {/*  <Navigation /> */}
+      <Navigation />
       <main>{children}</main>
       <Footer />
     </div>

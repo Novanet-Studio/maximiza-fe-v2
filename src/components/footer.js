@@ -59,7 +59,7 @@ const Footer = () => (
         <p className="footer__derechos">
           © {new Date().getFullYear()} Maximiza Casa de Bolsa - Derechos
           reservados | Diseñado por:{" "}
-          <img className="footer__imagen" src={data.logonn.publicURL} />
+          <img className="footer__imagen" src={data.logonn.publicURL} alt="Logo Novanet Studio" />
         </p>
       </footer>
     )}

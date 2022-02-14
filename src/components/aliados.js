@@ -25,7 +25,7 @@ const aliadosLogos = () => {
       <li className="aliados__carrusel-item">
         <StaticImage
           src="../assets/images/aliados-credit-suisse.png"
-          title="Logo Credit Suisse"
+          alt="Logo Credit Suisse"
         />
       </li>
       <li className="aliados__carrusel-item">
@@ -37,7 +37,7 @@ const aliadosLogos = () => {
       <li className="aliados__carrusel-item">
         <StaticImage
           src="../assets/images/aliados-silk.jpeg"
-          title="Logo Silk"
+          alt="Logo Silk"
         />
       </li>
     </ul>

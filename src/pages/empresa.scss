@@ -1,0 +1,556 @@
+/* 
+IMPORTANTE 
+Los estilos del bloque .informacion correspondientes a la vista legal, están en esta hoja ya que comparte las características gráficas con el bloque .historia de esta vista. El único estilo de .informacion que se controla en legal.scss, es el ancho de los items de la lista dado que en empresas son 3 y en al vista legal son 2
+*/
+
+/* Empresa
+========================================================================== */
+
+/*------Historia------*/
+.historia,
+.informacion {
+  &__item {
+    @extend .flex;
+  }
+  &__titulo {
+    color: $verde1;
+  }
+  &__texto {
+    color: $negro1;
+    font-weight: 300;
+  }
+  &__button {
+    cursor: pointer;
+    border: none;
+    color: $blanco1;
+    background-color: $verde1;
+  }
+
+  // -- Revisar -- //
+  .modal__cuerpo .gatsby-image-wrapper {
+    display: none;
+  }
+  .modal__cuerpo {
+    h2 {
+      padding-left: 0vw;
+    }
+  }
+}
+
+/*------Nosotros------*/
+.nosotros {
+  &__item {
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      transition: 0.5s;
+      .nosotros__descripcion {
+        opacity: 1;
+        transition: all 0.5s;
+        visibility: visible;
+      }
+      .nosotros__imagen {
+        filter: grayscale(100%);
+      }
+    }
+    // .nosotros__titulo {
+    //   background-color: $verde1;
+    // }
+    // .nosotros__descripcion {
+    //   border-bottom: $verde1 solid 2px;
+    // }
+  }
+  &__titulo {
+    background-color: $verde1;
+  }
+  &__descripcion {
+    border-bottom: $verde1 solid 2px;
+  }
+  &__imagen {
+    position: absolute !important;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  &__titulo {
+    text-align: center;
+    color: $blanco1;
+  }
+  &__descripcion {
+    font-weight: 300;
+    color: $negro1;
+    background: $blanco2;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+  }
+}
+
+/*------Aliados------*/
+.aliados {
+  background: $blanco2;
+  &__descripcion {
+    text-align: center;
+  }
+  &__carrusel {
+    @extend .flex;
+    justify-content: space-between;
+  }
+}
+
+/*------Balances------*/
+.balances {
+  &__grupo {
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__subtitulo {
+    color: $gris1;
+  }
+
+  &__boton {
+    cursor: pointer;
+    color: $gris2;
+    width: 100%;
+    display: block;
+    background: $blanco2;
+    border-top: 0;
+    border-right: $blanco1 solid 4px;
+    border-bottom: $blanco1 solid 4px;
+    border-left: 0;
+    text-align: left;
+    &:hover {
+      transition: 0.5s;
+      color: $blanco1;
+      background: $verde1;
+      .svg-inline--fa {
+        path {
+          fill: $blanco1;
+        }
+      }
+    }
+    .svg-inline--fa {
+      path {
+        fill: $verde1;
+      }
+    }
+  }
+}
+
+@include min-media(320px, portrait) {
+  /* Empresa
+========================================================================== */
+  /*------Historia------*/
+  .historia,
+  .informacion {
+    margin-top: 7vh;
+    &__item {
+      width: 100%;
+      padding-bottom: 5vh;
+    }
+    &__image {
+      width: 55%;
+    }
+    &__descripcion {
+      width: 100%;
+      padding: 1.5vh 0 0 0;
+    }
+    &__texto {
+      font-size: 0.85rem;
+      line-height: 1.3rem;
+      padding-bottom: 1vh;
+    }
+    &__button {
+      font-size: 0.7rem;
+      padding: 1.5vh;
+    }
+  }
+  .equipo {
+    margin-top: 2vh;
+  }
+
+  /*------Nosotros------*/
+  .nosotros {
+    margin-top: 7vh;
+    &__item {
+      width: 100%;
+      height: 30vh;
+      margin-bottom: 1.5vh;
+    }
+    &__imagen {
+      width: 100%;
+      height: 30vh;
+    }
+    &__titulo {
+      padding: 1.5vh 0;
+      margin-top: 12vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+      padding: 2vh;
+      font-size: 0.8rem;
+      line-height: 1.3rem;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    padding: 3vh;
+    &__carrusel {
+      padding-top: 4vh;
+      &-item {
+        width: 40%;
+        margin: 2vh 1.5vh 2vh 1.5vh;
+      }
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-top: 7vh;
+    margin-bottom: 5vh;
+    &__grupo {
+      margin-top: 2vh;
+    }
+    &__subtitulo {
+      width: 100%;
+      text-align: center;
+    }
+    &__lista {
+      margin: 1vh 3vh;
+      width: 100%;
+    }
+    &__item {
+      width: 50%;
+    }
+    &__boton {
+      font-size: 0.85rem;
+      padding: 1.5vh;
+      svg {
+        margin-right: 1vh;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@include min-media(568px, landscape) {
+  /* Empresa
+========================================================================== */
+  /*------Historia------*/
+  .historia {
+    &__descripcion {
+      width: 75%;
+      padding: 0 0 0 4vh;
+    }
+  }
+  .historia,
+  .informacion {
+    margin-top: 12vh;
+    &__item {
+      width: 100%;
+      padding-bottom: 9vh;
+    }
+    &__image {
+      width: 25%;
+    }
+    &__texto {
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+      padding-bottom: 1vh;
+    }
+    &__button {
+      padding: 2vh;
+      margin-top: 1vh;
+      font-size: 0.7rem;
+    }
+  }
+  .equipo {
+    margin: 4vh 0;
+  }
+
+  /*------Nosotros------*/
+  .nosotros {
+    margin: 10vh 0 0 0;
+    &__item {
+      width: 33.3333333%;
+      height: 54.5vh;
+      margin-bottom: 0;
+    }
+    &__imagen {
+      width: 100%;
+      height: 54.5vh;
+    }
+    &__titulo {
+      padding: 1vh 0;
+      margin-top: 23vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+      padding: 1.5vh;
+      font-size: 0.75rem;
+      line-height: 1.1rem;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    padding: 3vh;
+    &__carrusel {
+      padding-top: 2vh;
+      margin: 0;
+      width: 100%;
+      &-item {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-bottom: 13vh;
+    &__grupo {
+      margin-top: 2vh;
+    }
+    &__subtitulo {
+      width: 100%;
+      text-align: center;
+    }
+    &__lista {
+      margin: 1vh 3vh;
+      width: 100%;
+    }
+    &__item {
+      width: 33.33333%;
+    }
+    &__boton {
+      font-size: 0.85rem;
+      padding: 2.5vh 1.5vh;
+      svg {
+        margin-right: 1vh;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@include min-media(768px, portrait) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia,
+  .informacion {
+    margin-top: 5vh;
+    &__item {
+      padding-bottom: 3vh;
+    }
+    &__image {
+      width: 20%;
+    }
+    &__descripcion {
+      width: 80%;
+      padding: 0 0 0 2vh;
+    }
+    &__texto {
+      font-size: 0.95rem;
+      line-height: 1.5rem;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 1vh;
+      margin-top: 1vh;
+    }
+  }
+
+  .equipo {
+    margin-top: 5vh;
+  }
+
+  /*------Nosotros------*/
+  .nosotros {
+    margin-top: 5vh;
+    margin-bottom: 0;
+    &__item {
+      width: 33.3333333%;
+      height: 23.67vh;
+      margin-bottom: 0;
+    }
+    &__imagen {
+      width: 100%;
+      height: 23.67vh;
+    }
+    &__titulo {
+      padding: 1vh 0;
+      margin-top: 09vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    margin-top: 5vh;
+    margin-bottom: 0;
+    padding: 5vh 3vh 6vh 3vh;
+    &__carrusel {
+      padding-top: 2vh;
+      &-item {
+        width: 20vw;
+      }
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-top: 5vh;
+    &__grupo {
+      margin-top: 4vh;
+    }
+    &__lista {
+      margin: 1vh 0;
+    }
+    &__item {
+      width: 16.6666666%;
+    }
+    &__boton {
+      padding: 1vh 0.5vh;
+      font-size: 0.83rem;
+      text-align: center;
+      svg {
+        margin-right: 0.5vh;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@include min-media(1024px, landscape) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia,
+  .informacion {
+    &__descripcion {
+      padding: 0 0 0 3vh;
+    }
+    &__titulo {
+      padding-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    &__button {
+      font-size: 0.9rem;
+      padding: 1.5vh;
+    }
+    &__image {
+      width: 20%;
+    }
+  }
+
+  /*------Nosotros------*/
+  .nosotros {
+    margin: 4vh 0 10vh;
+    &__titulo {
+      margin-top: 17vh;
+      font-size: 1.1rem;
+    }
+    &__item {
+      height: 40.9vh;
+    }
+    &__imagen {
+      height: 40.9vh;
+    }
+    &__descripcion {
+      font-size: 0.95rem;
+      line-height: 1.4rem;
+      padding: 2vh;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    margin-top: 12vh;
+    margin-bottom: 12vh;
+    &__carrusel {
+      height: 22vh;
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-bottom: 10vh;
+    &__subtitulo {
+      width: 10%;
+      text-align: right;
+    }
+    &__lista {
+      width: 88%;
+      margin: 0;
+    }
+    &__item {
+      width: 16%;
+    }
+    &__boton {
+      padding: 1.5vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@include min-media(1280px) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia {
+    &__item {
+      width: 50%;
+      padding-bottom: 0;
+    }
+    &__image {
+      width: 33%;
+    }
+    &__descripcion {
+      width: 67%;
+      padding: 0 6vh 0 2vh;
+    }
+  }
+
+  .equipo {
+    margin: 12vh 0 0 0;
+  }
+
+  .nosotros {
+    &__titulo {
+      font-size: 1.2rem;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    &__carrusel {
+      margin: 0 auto;
+      width: 90%;
+      height: 26vh;
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    &__boton {
+      font-size: 1rem;
+    }
+  }
+}

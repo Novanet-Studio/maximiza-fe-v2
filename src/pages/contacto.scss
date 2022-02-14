@@ -1,0 +1,282 @@
+
+/* Contacto pagina
+========================================================================== */
+
+/*------datos------*/
+.datos {
+  @extend .flex;
+  justify-content: space-between;
+  & .columna {
+    &--izq,
+    &--der {
+      width: 100%;
+    }
+
+    &--izq {
+      text-align: left;
+    }
+  }
+  &__item {
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+    .datos__icono {
+      background: $verde1;
+    }
+  }
+  &__icono {
+    color: $blanco1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__texto {
+    font-weight: 500;
+    color: $gris2;
+  }
+  &__form {
+    @extend .flex;
+  }
+  &__input {
+    color: $gris2;
+    font-weight: 500;
+    border: none;
+    border-bottom: $verde1 2px solid;
+  }
+  &__textarea {
+    color: $gris2;
+    font-weight: 500;
+    border: none;
+    border-bottom: $verde1 2px solid;
+  }
+  &__button {
+    cursor: pointer;
+    font-weight: 400;
+    color: $blanco1;
+    background: $verde1;
+    border: none;
+  }
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /*------datos------*/
+  .datos {
+    margin-top: 6vh;
+    &__item {
+      width: 100%;
+      margin-bottom: 5vh;
+    }
+    &__icono {
+      display: flex;
+      align-self: flex-start;
+      width: 5vh;
+      height: 5vh;
+    }
+    &__texto {
+      width: 87%;
+      line-height: 1.4rem;
+      font-size: 0.9rem;
+    }
+    &__form {
+      margin: 3vh 0;
+    }
+    &__input {
+      width: 100%;
+      margin-bottom: 10%;
+      font-size: 0.85rem;
+      padding: 0.7vh 0.5vh;
+    }
+    &__textarea {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 1vh 0.5vh;
+      margin-bottom: 8%;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 2.5vh 3vh 3vh 3vh;
+      margin: 2.5vh auto;
+      img {
+        width: 3.5vh;
+        margin-bottom: -0.5vh;
+        margin-right: 0.5vw;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /*------datos------*/
+  .datos {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    &__item {
+      width: 100%;
+      margin-bottom: 10vh;
+    }
+    &__icono {
+      display: flex;
+      align-self: flex-start;
+      width: 8vh;
+      height: 8vh;
+    }
+    &__texto {
+      width: 93%;
+      line-height: 1.4rem;
+      font-size: 0.9rem;
+    }
+    &__form {
+      margin: 7vh 0;
+    }
+    &__input {
+      width: 100%;
+      margin-bottom: 6%;
+      font-size: 0.85rem;
+      padding: 0.7vh 0.5vh;
+    }
+    &__textarea {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 1vh 0.5vh;
+      margin-bottom: 4%;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 5.5vh 5vh 6vh 5vh;
+      // margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &__button-icon {
+      width: 6.5vh;
+      margin-bottom: -1.5vh;
+      margin-right: 0.5vw;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /*------datos------*/
+  .datos {
+    margin-top: 7vh;
+    &__item {
+      width: 33.333333%;
+      margin-bottom: 0;
+      align-items: flex-start;
+    }
+    &__icono {
+      width: 2.5vh;
+      height: 2.5vh;
+    }
+    &__texto {
+      width: 85%;
+      font-size: 0.8rem;
+      line-height: 1.3rem;
+    }
+    &__form {
+      justify-content: flex-end;
+      margin: 5vh 0 0 2vh;
+    }
+    &__input {
+      width: 48%;
+      margin-right: 2%;
+      margin-bottom: 2%;
+      padding: 0.7vh 0.5vh;
+    }
+    &__textarea {
+      width: 98%;
+      padding: 1vh 0.5vh;
+      margin-right: 2%;
+      margin-bottom: 2%;
+    }
+    &__button {
+      padding: 2vh 2vh 2.5vh 2vh;
+      font-size: 0.95rem;
+      margin: 0 auto;
+    }
+    &__button-icon {
+      width: 2.2vh;
+      margin-bottom: -0.5vh;
+      margin-right: 0.5vw;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /*------datos------*/
+  .datos {
+    .columna--izq {
+      margin-bottom: 10vh;
+    }
+    &__item {
+      width: 33.333333%;
+      margin-bottom: 0;
+      align-items: flex-start;
+    }
+    &__icono {
+      width: 3.5vh;
+      height: 3.5vh;
+    }
+    &__texto {
+      width: 89%;
+    }
+    &__form {
+      justify-content: flex-end;
+      margin: 0 0 0 2vh;
+    }
+    &__input {
+      width: 47%;
+      margin-right: 3%;
+      margin-bottom: 2.5%;
+      font-size: 1rem;
+    }
+    &__textarea {
+      width: 97%;
+      font-size: 1rem;
+      margin-right: 3%;
+      margin-bottom: 1%;
+    }
+    &__button {
+      font-size: 1rem;
+      padding: 3vh 3.3vh 3.5vh;
+      margin: 3.5vh auto;
+    }
+    &__button-icon {
+      width: 4vh;
+      padding-right: 1vh;
+      margin-bottom: -0.5vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  /*------datos------*/
+  .datos {
+
+    & .columna {
+      &--izq {
+        width: 30%;
+        margin-bottom: 0;
+      }
+      &--der {
+        width: 67%;
+      }
+    }
+    &__item {
+      width: 100%;
+      margin-bottom: 6vh;
+    }
+    &__texto {
+      font-size: 1rem;
+    }
+    &__button {
+      margin: 3.5vh 3vh 0 0;
+    }
+  }
+}

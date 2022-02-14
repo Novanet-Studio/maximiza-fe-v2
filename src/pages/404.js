@@ -1,15 +1,17 @@
-import React from "react"
-import Layout from "../layout/layout"
-import LinkNav from "../components/linkNav";
-import Seo from "../components/seo"
-import Perdido from "../assets/images/max-404-sec1.jpg"
+import React from "react";
+import Layout from "../layout/layout";
+import Seo from "../components/seo";
+import { StaticImage } from "gatsby-plugin-image";
 
 const NotFoundPage = () => (
   <Layout>
     <Seo title="404: Not found" />
     <section className="principal">
       <div className="columna columna--izq">
-        <img className="principal__imagen" src={Perdido} alt="404" />
+        <StaticImage
+          src="../assets/images/max-404-sec1.jpg"
+          alt="Persona buscando en pila de pila de papeles"
+        />
       </div>
 
       <div className="columna columna--der">
@@ -19,16 +21,17 @@ const NotFoundPage = () => (
           lugar. Usa el menú de navegación para volver al sitio o haz click en
           el botón de abajo para volver al inicio.
         </p>
-        <LinkNav
-            estilo="principal__boton"
-            text="Ir al inicio"
-            to="/"
-          />
+        <button
+          className="principal__boton"
+          onClick={() => (document.location.href = "/")}
+        >
+          Ir al inicio
+        </button>
       </div>
     </section>
 
     <section className="perdido"></section>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;
