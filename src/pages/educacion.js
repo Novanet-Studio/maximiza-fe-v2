@@ -24,7 +24,7 @@ const Educacion = ({ data }) => (
           className="principal__texto"
           children={data.strapiEducacion.principal.contenido}
           remarkPlugins={[remarkGfm]}
-          skipHtml={false}
+          skipHtml={true}
         />
       </div>
       <div className="columna columna--der">
@@ -54,7 +54,7 @@ const Educacion = ({ data }) => (
                 className="innovar__descripcion"
                 children={item.contenido}
                 remarkPlugins={[remarkGfm]}
-                skipHtml={false}
+                skipHtml={true}
               />
             </div>
           </li>

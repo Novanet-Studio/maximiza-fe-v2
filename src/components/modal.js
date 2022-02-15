@@ -1,8 +1,8 @@
-import React from "react"
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import "./modal.scss"
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import "./modal.scss";
 
 const Modal = ({ data, id, onClose, imageFieldName }) =>
   data.map(
@@ -18,13 +18,13 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
                 <GatsbyImage
                   className="modal__imagen"
                   image={getImage(item[imageFieldName].localFile)}
-                  title={item.seo_imagen.titulo}
-                  alt={item.seo_imagen.texto_alternativo}
+                  title={item.titulo}
+                  alt={item.titulo}
                 />
               )}
               <h2 className="modal__titulo">{item.titulo}</h2>
               <ReactMarkdown
-                className="modal__descripcion"               
+                className="modal__descripcion"
                 children={item.contenido}
                 remarkPlugins={[remarkGfm]}
                 skipHtml={false}
@@ -33,6 +33,6 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
           </div>
         </div>
       )
-  )
+  );
 
-export default Modal
+export default Modal;

@@ -4,12 +4,12 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Layout from "../layout/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import "./blog.scss";
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO
+    <Seo
       title={data.strapiBlog.seo.titulo}
       description={data.strapiBlog.descripcion}
       image={data.strapiBlog.seo.imagen}
@@ -91,7 +91,7 @@ export const query = graphql`
       }
     }
 
-    articulos: allStrapiArticulo(sort: { fields: [createdAt], order: DESC }) {
+    articulos: allStrapiArticulos(sort: { fields: [createdAt], order: DESC }) {
       edges {
         node {
           id

@@ -119,8 +119,10 @@ const Servicios = ({ data }) => {
         </ul>
       </section>
       <Cta
+        estilo="cta-informacion__boton"
         mensaje="¡Gracias por preferirnos!"
         textoBoton="Obtenga más información"
+        link="/contacto"
       />
     </Layout>
   );

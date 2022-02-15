@@ -36,7 +36,7 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {       
-          formats: [`auto`, `webp`, `avif`],
+          formats: [`auto`, `webp`],
           placeholder: `blurred`,
           quality: 100,
           breakpoints: [416, 736, 1024, 1280, 1366],
@@ -61,7 +61,7 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL,
-        contentTypes: ["articulo"],
+        collectionTypes: ["articulos"],
         singleTypes: [
           "blog",
           "contact",

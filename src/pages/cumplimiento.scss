@@ -1,0 +1,283 @@
+/* IMPORTANTE 
+Los estilos del bloque .información están en empresa.scss ya que comparte las características gráficas con el bloque .historia de esa vista. El único estilo que se controla en esta hoja, es el ancho de los items de la lista dado que en empresas son 3 y en al vista legal son 2
+*/
+
+/* Legal
+========================================================================== */
+
+/*------Etica------*/
+.etica {
+  @extend .flex;
+  justify-content: space-between;
+  &__titulo {
+    color: $verde1;
+    text-align: left;
+  }
+  &__texto {
+    color: $negro1;
+    font-weight: 300;
+    border-bottom: $gris5 3px solid;
+  }
+}
+
+/*------Normativas------*/
+.normativas {
+  &__item {
+    @extend .flex;
+    justify-content: space-between;
+  }
+  &__ver {
+    background-color: $verde1;
+    width: 100%;
+    color: $blanco2;
+    border: none;
+    text-align: center;
+  }
+  &__down {
+    display: block;
+    cursor: pointer;
+    color: $verde1;
+    width: 100%;
+    background: $blanco2;
+    border: none;
+    text-align: center;
+  }
+  &__contenido {
+    font-weight: 500;
+  }
+}
+
+@include min-media(320px, portrait) {
+  /* Legal
+========================================================================== */
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 8vh;
+    &__imagen {
+      width: 100%;
+    }
+    &__titulo {
+      margin-top: 1vh;
+      margin-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 0.85rem;
+      line-height: 1.2rem;
+      padding-bottom: 2vh;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    margin-top: 9vh;
+    margin-bottom: 5vh;
+    &__item {
+      width: 100%;
+      margin-top: 4vh;
+      margin-bottom: 4vh;
+    }
+    &__descarga {
+      width: 12%;
+    }
+    &__ver,
+    &__down {
+      padding: 0.7vh 0;
+    }
+    &__contenido {
+      width: 84%;
+      font-size: 0.85rem;
+      line-height: 1.4rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@include min-media(568px, landscape) {
+  /* Legal
+========================================================================== */
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 15vh;
+    &__imagen {
+      width: 45%;
+      margin-bottom: 3vh;
+    }
+    &__titulo {
+      margin-bottom: 1.5vh;
+    }
+    &__texto {
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+      padding-bottom: 3vh;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    margin: 17vh 0 14vh 0;
+    &__item {
+      width: 100%;
+      padding: 7vh 0;
+    }
+    &__descarga {
+      width: 6%;
+    }
+    &__ver,
+    &__down {
+      padding: 0.7vh 0;
+    }
+    &__contenido {
+      width: 92%;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@include min-media(768px, portrait) {
+  /* Legal
+========================================================================== */
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 6vh;
+    &__imagen {
+      width: 40%;
+      margin-bottom: 1vh;
+    }
+    &__titulo {
+      margin-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      padding-bottom: 2vh;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    margin: 6vh 0 5vh;
+    &__lista {
+      margin-top: 3vh;
+    }
+    &__item {
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      padding-left: 2vh;
+      padding-right: 2vh;
+      width: 50%;
+    }
+    &__descarga {
+      width: 14%;
+    }
+    &__ver,
+    &__down {
+      padding: 0.7vh 0;
+    }
+    &__contenido {
+      width: 83%;
+      padding-right: 3vh;
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@include min-media(1024px, landscape) {
+  /* Legal
+========================================================================== */
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 6vh;
+    &__imagen {
+      width: 35%;
+      margin-bottom: 0;
+    }
+    &__contenido {
+      width: 63%;
+    }
+    &__titulo {
+      margin-bottom: 0.5vh;
+    }
+    &__texto {
+      font-size: 0.9rem;
+      padding-bottom: 2vh;
+      line-height: 1.2rem;
+    }
+  }
+
+  .informacion {
+    &__descripcion {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    margin: 12vh 0;
+    &__lista {
+      margin-top: 4vh;
+    }
+    &__item {
+      width: 33.333333%;
+      padding: 3vh 2vh 3vh;
+    }
+    &__descarga {
+      width: 12%;
+    }
+    &__contenido {
+      width: 84%;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@include min-media(1280px) {
+  /* Legal
+========================================================================== */
+
+  .informacion {
+    &__item {
+      flex: 1 1 33%;
+      padding-bottom: 0;
+    }
+    &__descripcion {
+      width: 100%;
+      padding-right: 4vh;
+    }
+  }
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 15vh;
+    &__imagen {
+      width: 31%;
+    }
+    &__contenido {
+      width: 67%;
+    }
+    &__texto {
+      -webkit-column-count: 2;
+      column-count: 2;
+      -webkit-column-gap: 3em;
+      column-gap: 3em;
+      font-size: 0.98rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    &__contenido {
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+    }
+  }
+}

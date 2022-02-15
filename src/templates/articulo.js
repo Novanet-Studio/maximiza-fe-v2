@@ -18,9 +18,9 @@ const shareUrl = window.location.href;
 const BlogTemplate = ({ data }) => (
   <Layout>
     <Seo
-      title={data.strapiArticulo.titulo}
-      description={data.strapiArticulo.descripcion}
-      image={data.strapiArticulo.imagen.publicURL}
+      title={data.strapiArticulos.titulo}
+      description={data.strapiArticulos.descripcion}
+      image={data.strapiArticulos.imagen.publicURL}
     />
     <section className="articulo__principal">
       <Link className="articulo__boton-regreso" to="/blog">
@@ -28,17 +28,17 @@ const BlogTemplate = ({ data }) => (
       </Link>
       <GatsbyImage
         className="articulo__imagen"
-        image={getImage(data.strapiArticulo.imagen.localFile)}
-        alt={data.strapiArticulo.seo_imagen.texto_alternativo}
-        title={data.strapiArticulo.seo_imagen.titulo}
+        image={getImage(data.strapiArticulos.imagen.localFile)}
+        alt={data.strapiArticulos.seo_imagen.texto_alternativo}
+        title={data.strapiArticulos.seo_imagen.titulo}
       />
-      <h1 className="articulo__titulo">{data.strapiArticulo.titulo}</h1>
+      <h1 className="articulo__titulo">{data.strapiArticulos.titulo}</h1>
     </section>
 
     <article className="articulo">
       <ReactMarkdown
         className="articulo__descripcion"
-        children={data.strapiArticulo.descripcion}
+        children={data.strapiArticulos.descripcion}
         remarkPlugins={[remarkGfm]}
         skipHtml={false}
       />
@@ -58,8 +58,8 @@ const BlogTemplate = ({ data }) => (
 export default BlogTemplate;
 
 export const query = graphql`
-  query BlogTemplateQuery($id: String) {
-    strapiArticulo(id: { eq: $id }) {
+  query ArticuloTemplateQuery($id: String) {
+    strapiArticulos(id: { eq: $id }) {
       titulo
       descripcion
       imagen {
@@ -76,3 +76,4 @@ export const query = graphql`
     }
   }
 `;
+

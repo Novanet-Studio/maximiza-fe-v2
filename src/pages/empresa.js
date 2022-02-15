@@ -118,9 +118,9 @@ const Empresa = ({ data }) => {
       <section className="balances">
         <h2>Balances mensuales</h2>
         {data.strapiEmpresa.balances.map((item) => (
-          <div className="balances__grupo">
+          <div className="balances__grupo" key={item.id}>
             <h3 className="balances__subtitulo">{item.ano}</h3>
-            <ul className="balances__lista" key={item.id}>
+            <ul className="balances__lista">
               {item.mes.map((element) => (
                 <li className="balances__item" key={element.id}>
                   <a
