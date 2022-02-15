@@ -13,47 +13,54 @@ import {
 } from "react-share";
 import "../pages/blog.scss";
 
-const shareUrl = window.location.href;
-
-const BlogTemplate = ({ data }) => (
-  <Layout>
-    <Seo
-      title={data.strapiArticulos.titulo}
-      description={data.strapiArticulos.descripcion}
-      image={data.strapiArticulos.imagen.publicURL}
-    />
-    <section className="articulo__principal">
-      <Link className="articulo__boton-regreso" to="/blog">
-        « Volver al blog
-      </Link>
-      <GatsbyImage
-        className="articulo__imagen"
-        image={getImage(data.strapiArticulos.imagen.localFile)}
-        alt={data.strapiArticulos.seo_imagen.texto_alternativo}
-        title={data.strapiArticulos.seo_imagen.titulo}
+const BlogTemplate = ({ data }) => {
+  const isBrowser = typeof window !== "undefined";
+  const viewUrl = () => {
+    if (!isBrowser) {
+      return;
+    }
+    return window.location.href;
+  };
+  return (
+    <Layout>
+      <Seo
+        title={data.strapiArticulos.titulo}
+        description={data.strapiArticulos.descripcion}
+        image={data.strapiArticulos.imagen.publicURL}
       />
-      <h1 className="articulo__titulo">{data.strapiArticulos.titulo}</h1>
-    </section>
+      <section className="articulo__principal">
+        <Link className="articulo__boton-regreso" to="/blog">
+          « Volver al blog
+        </Link>
+        <GatsbyImage
+          className="articulo__imagen"
+          image={getImage(data.strapiArticulos.imagen.localFile)}
+          alt={data.strapiArticulos.seo_imagen.texto_alternativo}
+          title={data.strapiArticulos.seo_imagen.titulo}
+        />
+        <h1 className="articulo__titulo">{data.strapiArticulos.titulo}</h1>
+      </section>
 
-    <article className="articulo">
-      <ReactMarkdown
-        className="articulo__descripcion"
-        children={data.strapiArticulos.descripcion}
-        remarkPlugins={[remarkGfm]}
-        skipHtml={false}
-      />
-      <div className="articulo__compartir">
-        <h3>Comparte este artículo</h3>
-        <LinkedinShareButton url={shareUrl} children="a">
-          <LinkedinIcon size={28} />
-        </LinkedinShareButton>
-        <TwitterShareButton url={shareUrl} children="a">
-          <TwitterIcon size={28} />
-        </TwitterShareButton>
-      </div>
-    </article>
-  </Layout>
-);
+      <article className="articulo">
+        <ReactMarkdown
+          className="articulo__descripcion"
+          children={data.strapiArticulos.descripcion}
+          remarkPlugins={[remarkGfm]}
+          skipHtml={false}
+        />
+        <div className="articulo__compartir">
+          <h3>Comparte este artículo</h3>
+          <LinkedinShareButton url={viewUrl()} children="a">
+            <LinkedinIcon size={28} />
+          </LinkedinShareButton>
+          <TwitterShareButton url={viewUrl()} children="a">
+            <TwitterIcon size={28} />
+          </TwitterShareButton>
+        </div>
+      </article>
+    </Layout>
+  );
+};
 
 export default BlogTemplate;
 
@@ -76,4 +83,3 @@ export const query = graphql`
     }
   }
 `;
-
