@@ -27,6 +27,7 @@ const Servicios = ({ data }) => {
               children={data.strapiServicios.principal.titulo}
               remarkPlugins={[remarkGfm]}
               skipHtml={false}
+              linkTarget="_blank"
             />
           </h1>
           <p className="principal__texto">

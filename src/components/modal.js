@@ -1,6 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from 'rehype-raw';
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import "./modal.scss";
 
@@ -27,6 +28,7 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
                 className="modal__descripcion"
                 children={item.contenido}
                 remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
                 skipHtml={false}
               />
             </div>
