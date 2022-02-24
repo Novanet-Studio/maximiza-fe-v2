@@ -15,36 +15,34 @@ import "./cumplimiento.scss";
 library.add(fas);
 
 const Legal = ({ data }) => {
+  const dataSource = data.strapiLegalPopulateDeep.data.attributes;
   const [targetModal, setTargetModal] = useState("");
   return (
     <Layout>
       <Seo
-        title={data.strapiLegal.seo.titulo}
-        description={data.strapiLegal.descripcion}
-        image={data.strapiLegal.seo.imagen}
+        title="Maximiza: Legitimación de capitales"
+        description="Las instituciones financieras pueden usarse para la legitimación de capitales, ¿cómo prevenir que eso ocurra?"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300649/maximiza/uploads/maximiza_com_ve_legal_289ff17503.jpg"
       />
       <section className="principal">
         <div className="columna columna--izq">
-          <h1 className="principal__titulo">
-            {data.strapiLegal.principal.titulo}
-          </h1>
-          <p className="principal__texto">
-            {data.strapiLegal.principal.contenido}
-          </p>
+          <h1 className="principal__titulo">{dataSource.principal.titulo}</h1>
+          <p className="principal__texto">{dataSource.principal.contenido}</p>
         </div>
         <div className="columna columna--der">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(data.strapiLegal.principal.imagen.localFile)}
-            alt={data.strapiLegal.principal.seo_imagen.texto_alternativo}
-            title={data.strapiLegal.principal.seo_imagen.titulo}
+            image={getImage(
+              dataSource.principal.imagen.data.attributes.localFile
+            )}
+            alt={dataSource.principal.imagen.data.attributes.aternativeText}
           />
         </div>
       </section>
 
       <section className="informacion">
         <ul className="informacion__lista">
-          {data.strapiLegal.informacion.map((item) => (
+          {dataSource.informacion.map((item) => (
             <li className="informacion__item" key={item.id}>
               <div className="informacion__descripcion">
                 <h3 className="informacion__titulo">{item.titulo}</h3>
@@ -65,7 +63,7 @@ const Legal = ({ data }) => {
           ))}
           <Modal
             id={targetModal}
-            data={data.strapiLegal.informacion}
+            data={dataSource.informacion}
             onClose={() => setTargetModal("")}
           />
         </ul>
@@ -74,28 +72,23 @@ const Legal = ({ data }) => {
       <section className="etica">
         <GatsbyImage
           className="etica__imagen"
-          image={getImage(data.strapiLegal.codigo.imagen.localFile)}
-          alt={data.strapiLegal.codigo.seo_imagen.texto_alternativo}
-          title={data.strapiLegal.codigo.seo_imagen.titulo}
+          image={getImage(dataSource.codigo.imagen.data.attributes.localFile)}
+          alt={dataSource.codigo.imagen.data.attributes.alternativeText}
         />
         <div className="etica__contenido">
-          <h2 className="etica__titulo">{data.strapiLegal.codigo.titulo}</h2>
-          <p className="etica__texto">{data.strapiLegal.codigo.contenido}</p>
+          <h2 className="etica__titulo">{dataSource.codigo.titulo}</h2>
+          <p className="etica__texto">{dataSource.codigo.contenido}</p>
         </div>
       </section>
 
       <section className="normativas">
-        <h2>{data.strapiLegal.normativas_titulo}</h2>
+        <h2>{dataSource.normativas_titulo}</h2>
         <ul className="normativas__lista">
-          {data.strapiLegal.descargas.map((item) => (
+          {dataSource.descargas.map((item) => (
             <li className="normativas__item" key={item.id}>
               <div className="normativas__descarga">
                 <div className="normativas__ver">
-                  <FontAwesomeIcon
-                    icon={["fas", "eye"]}
-                    fixedWidth
-                    size="1x"
-                  />
+                  <FontAwesomeIcon icon={["fas", "eye"]} fixedWidth size="1x" />
                 </div>
                 <a className="normativas__down" href={item.vinculo} download>
                   <FontAwesomeIcon
@@ -118,52 +111,53 @@ export default Legal;
 
 export const query = graphql`
   query LegalQuery {
-    strapiLegal {
-      seo {
-        titulo
-        descripcion
-        imagen
-      }
-      principal {
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 630)
+    strapiLegalPopulateDeep {
+      data {
+        attributes {
+          principal {
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 630)
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          texto_alternativo
-          titulo
-        }
-      }
-      informacion {
-        id
-        titulo
-        contenido
-      }
-      codigo {
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 430)
+          informacion {
+            id
+            titulo
+            contenido
+          }
+          codigo {
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 430)
+                    }
+                  }
+                }
+              }
             }
           }
+          normativas_titulo
+          descargas {
+            id
+            documento
+            vinculo
+          }
         }
-        seo_imagen {
-          texto_alternativo
-          titulo
-        }
-      }
-      normativas_titulo
-      descargas {
-        id
-        documento
-        vinculo
       }
     }
   }

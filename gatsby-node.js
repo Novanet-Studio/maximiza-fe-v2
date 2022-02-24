@@ -3,11 +3,15 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        articulos: allStrapiArticulos {
+        allStrapiArticulosPopulateDeep2 {
           edges {
             node {
-              id
-              Slug
+              data {
+                attributes {
+                  slug
+                }
+                id
+              }
             }
           }
         }
@@ -19,16 +23,17 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const articulos = result.data.articulos.edges;
-  const articuloTemplate = require.resolve("./src/templates/articulo.js");
+  const articulos = result.data.allStrapiArticulosPopulateDeep2.edges[0].node.data;
+  const articuloTemplate = require.resolve("./src/templates/articulo.js"); 
 
   articulos.forEach((articulo) => {
     createPage({
-      path: `/blog/${articulo.node.Slug}`,
+      path: `/blog/${articulo.attributes.slug}`,
       component: articuloTemplate,
       context: {
-        id: articulo.node.id,
+        id: articulo.id,
       },
     });
   });
 };
+

@@ -10,12 +10,14 @@ import LinkNav from "../components/linkNav";
 import "./index.scss";
 
 const Index = ({ data }) => {
+  const dataSource = data.strapiHomePopulateDeep.data.attributes;
+
   return (
     <LayoutIndex>
       <Seo
-        title={data.strapiHome.seo.titulo}
-        description={data.strapiHome.seo.descripcion}
-        image={data.strapiHome.seo.imagen}
+        title="Maximiza Casa de Bolsa"
+        description="Casa de bolsa dedicada a la asesoría financiera y a la gestión de activos transados en el mercado bursátil."
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_inicio_289286fe23.jpg"
       />
       <section className="principal">
         <div className="columna columna--izq">
@@ -26,7 +28,7 @@ const Index = ({ data }) => {
             className="principal__logo"
           />
           <p className="principal__texto principal__texto--corto">
-            {data.strapiHome.principal.logo_texto}
+            {dataSource.principal.logo_texto}
           </p>
           <LinkNav
             estilo="principal__boton"
@@ -37,50 +39,51 @@ const Index = ({ data }) => {
         <div className="columna columna--der">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(data.strapiHome.principal.imagen.localFile)}
-            title={data.strapiHome.principal.seo_imagen.titulo}
-            alt={data.strapiHome.principal.seo_imagen.texto_alternativo}
+            image={getImage(
+              dataSource.principal.imagen.data.attributes.localFile
+            )}
+            alt={dataSource.principal.imagen.data.attributes.alternativeText}
           />
         </div>
       </section>
 
-        <section className="beneficios">
-        <h2>{data.strapiHome.beneficios_titulo}</h2>
+      <section className="beneficios">
+        <h2>{dataSource.beneficios_titulo}</h2>
         <ul className="beneficios__lista">
-          {data.strapiHome.beneficios.map((item) => (
+          {dataSource.beneficios.map((item) => (
             <li className="beneficios__item" key={item.id}>
               <h3 className="beneficios__subtitulo">{item.titulo}</h3>
               <ReactMarkdown
-                className="beneficios__descripcion" 
+                className="beneficios__descripcion"
                 children={item.contenido}
                 remarkPlugins={[remarkGfm]}
-                skipHtml={false}          
+                skipHtml={false}
               />
             </li>
           ))}
         </ul>
       </section>
+
       <section className="servicios">
-        <h2>{data.strapiHome.servicios_titulo}</h2>
+        <h2>{dataSource.servicios_titulo}</h2>
         <ul className="servicios__lista">
-          {data.strapiHome.servicios.map((item) => (
+          {dataSource.servicios.map((item) => (
             <li className="servicios__item" key={item.id}>
-              <h3 className="servicios__subtitulo">{item.seo_imagen.titulo}</h3>
+              <h3 className="servicios__subtitulo">{item.titulo}</h3>
               <p className="servicios__descripcion">
-                {item.seo_imagen.contenido}
+                {item.contenido}
               </p>
               <GatsbyImage
                 className="servicios__imagen"
-                image={getImage(item.imagen.localFile)}
-                title={item.seo_imagen.titulo}
-                alt={item.seo_imagen.texto_alternativo}
+                image={getImage(item.imagen.data.attributes.localFile)}
+                alt={item.imagen.data.attributes.alternativeText}
               />
             </li>
           ))}
         </ul>
       </section>
       <section className="contacto">
-        <h2 className="contacto__titulo">{data.strapiHome.contacto_titulo}</h2>
+        <h2 className="contacto__titulo">{dataSource.contacto_titulo}</h2>
         <p className="contacto__descripcion">
           Si desea mayor información de nuestros servicios, escríbanos y nos
           comunicaremos con usted a la brevedad posible.
@@ -129,50 +132,50 @@ export default Index;
 
 export const query = graphql`
   query IndexQuery {
-    strapiHome {
-      seo {
-        titulo
-        descripcion
-        imagen
-      }
-      principal {
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 630)
+    strapiHomePopulateDeep {
+      data {
+        attributes {
+          principal {
+            logo_texto
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 630)
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
-        }
-        logo_texto
-      }
-      beneficios_titulo
-      beneficios {
-        id
-        titulo
-        contenido
-      }
-      servicios_titulo
-      servicios {
-        id
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 390)
+          servicios_titulo
+          servicios {
+            id
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 390)
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
+          beneficios_titulo
+          beneficios {
+            titulo
+            id
+            contenido
+          }
         }
       }
-      contacto_titulo
     }
   }
 `;

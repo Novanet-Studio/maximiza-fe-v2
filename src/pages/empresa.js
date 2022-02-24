@@ -17,42 +17,39 @@ library.add(fas);
 
 const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("");
+  const dataSource = data.strapiEmpresaPopulateDeep.data.attributes;
   return (
     <Layout>
       <Seo
-        title={data.strapiEmpresa.seo.titulo}
-        description={data.strapiEmpresa.seo.descripcion}
-        image={data.strapiEmpresa.seo.imagen}
+        title="Maximiza para invertir en la bolsa"
+        description="Somos una casa de bolsa que ofrece herramientas para invertir en la bolsa y gestionar instrumentos financieros."
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300650/maximiza/uploads/maximiza_com_ve_empresa_b3078cdf55.jpg"
       />
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(data.strapiEmpresa.principal.imagen.localFile)}
-            alt={data.strapiEmpresa.principal.seo_imagen.texto_alternativo}
-            title={data.strapiEmpresa.principal.seo_imagen.titulo}
+            image={getImage(
+              dataSource.principal.imagen.data.attributes.localFile
+            )}
+            alt={dataSource.principal.imagen.data.attributes.alternativeText}
           />
         </div>
 
         <div className="columna columna--der">
-          <h1 className="principal__titulo">
-            {data.strapiEmpresa.principal.titulo}
-          </h1>
-          <p className="principal__texto">
-            {data.strapiEmpresa.principal.contenido}
-          </p>
+          <h1 className="principal__titulo">{dataSource.principal.titulo}</h1>
+          <p className="principal__texto">{dataSource.principal.contenido}</p>
         </div>
       </section>
 
       <section className="historia">
         <ul className="historia__lista">
-          {data.strapiEmpresa.historia.map((item) => (
+          {dataSource.historia.map((item) => (
             <li className="historia__item" key={item.id}>
               <GatsbyImage
                 className="historia__image"
-                image={getImage(item.imagen.localFile)}
-                alt={item.seo_imagen.texto_alternativo}
-                title={item.seo_imagen.titulo}
+                image={getImage(item.imagen.data.attributes.localFile)}
+                alt={item.imagen.data.attributes.alternativeText}
               />
               <div className="historia__descripcion">
                 <h3 className="historia__titulo">{item.titulo}</h3>
@@ -73,7 +70,7 @@ const Empresa = ({ data }) => {
           ))}
           <Modal
             id={targetModal}
-            data={data.strapiEmpresa.historia}
+            data={dataSource.historia}
             imageFieldName="imagen"
             onClose={() => setTargetModal("")}
           />
@@ -81,13 +78,13 @@ const Empresa = ({ data }) => {
       </section>
 
       <section className="equipo">
-        <h2>{data.strapiEmpresa.equipo.titulo}</h2>
-        <p className="descripcion">{data.strapiEmpresa.equipo.contenido}</p>
+        <h2>{dataSource.equipo.titulo}</h2>
+        <p className="descripcion">{dataSource.equipo.contenido}</p>
       </section>
 
       <section className="nosotros">
         <ul className="nosotros__lista">
-          {data.strapiEmpresa.nosotros.map((item) => (
+          {dataSource.nosotros.map((item) => (
             <li className="nosotros__item" key={item.id}>
               <h3 className="nosotros__titulo">{item.titulo}</h3>
               <ReactMarkdown
@@ -98,9 +95,8 @@ const Empresa = ({ data }) => {
               />
               <GatsbyImage
                 className="nosotros__imagen"
-                image={getImage(item.imagen.localFile)}              
-                alt={item.seo_imagen.texto_alternativo}
-                title={item.seo_imagen.titulo}
+                image={getImage(item.imagen.data.attributes.localFile)}
+                alt={item.imagen.data.attributes.alternativeText}
               />
             </li>
           ))}
@@ -108,16 +104,14 @@ const Empresa = ({ data }) => {
       </section>
 
       <section className="aliados">
-        <h2>{data.strapiEmpresa.aliados.titulo}</h2>
-        <p className="aliados__descripcion">
-          {data.strapiEmpresa.aliados.contenido}
-        </p>
+        <h2>{dataSource.aliados.titulo}</h2>
+        <p className="aliados__descripcion">{dataSource.aliados.contenido}</p>
         <Aliados />
       </section>
 
       <section className="balances">
         <h2>Balances mensuales</h2>
-        {data.strapiEmpresa.balances.map((item) => (
+        {dataSource.balances.map((item) => (
           <div className="balances__grupo" key={item.id}>
             <h3 className="balances__subtitulo">{item.ano}</h3>
             <ul className="balances__lista">
@@ -149,75 +143,76 @@ export default Empresa;
 
 export const query = graphql`
   query EmpresaQuery {
-    strapiEmpresa {
-      seo {
-        titulo
-        descripcion
-        imagen
-      }
-      principal {
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 630)
+    strapiEmpresaPopulateDeep {
+      data {
+        attributes {
+          principal {
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 630)
+                    }
+                  }
+                  alternativeText
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          texto_alternativo
-          titulo
-        }
-      }
-      historia {
-        id
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 450)
+          historia {
+            id
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 450)
+                    }
+                  }
+                  alternativeText
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          texto_alternativo
-          titulo
-        }
-      }
-      equipo {
-        titulo
-        contenido
-      }
-      aliados {
-        id
-        titulo
-        contenido
-      }
-      nosotros {
-        id
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 375)
+          equipo {
+            titulo
+            contenido
+          }
+          aliados {
+            id
+            titulo
+            contenido
+          }
+          nosotros {
+            id
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 375)
+                    }
+                  }
+                }
+              }
             }
-          }          
-        }
-        seo_imagen {
-          texto_alternativo
-          titulo
-        }
-      }
-      balances {
-        id
-        ano
-        mes {
-          id
-          mes
-          archivo_descarga
+          }
+          balances {
+            id
+            ano
+            mes {
+              id
+              mes
+              descarga
+            }
+          }
         }
       }
     }

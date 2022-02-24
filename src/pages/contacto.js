@@ -14,28 +14,28 @@ import "./contacto.scss";
 library.add(fab);
 
 const Contacto = ({ data }) => {
+  const dataSource = data.strapiContactoPopulateDeep.data.attributes
   return (
     <Layout>
       <Seo
-        title={data.strapiContact.seo.titulo}
-        description={data.strapiContact.seo.descripcion}
-        image={data.strapiContact.seo.imagen}
+        title="Contacto"
+        description="Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros."
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300646/maximiza/uploads/maximiza_com_ve_contacto_5d0c32ef6a.jpg"
       />
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(data.strapiContact.principal.imagen.localFile)}
-            title={data.strapiContact.principal.seo_imagen.titulo}
-            alt={data.strapiContact.principal.seo_imagen.texto_alternativo}
+            image={getImage(dataSource.principal.imagen.data.attributes.localFile)}
+            alt={dataSource.principal.imagen.data.attributes.alternativeText}
           />
         </div>
         <div className="columna columna--der">
           <h1 className="principal__titulo">
-            {data.strapiContact.principal.titulo}
+            {dataSource.principal.titulo}
           </h1>
           <p className="principal__texto">
-            {data.strapiContact.principal.contenido}
+            {dataSource.principal.contenido}
           </p>
         </div>
       </section>
@@ -118,25 +118,25 @@ export default Contacto;
 
 export const query = graphql`
   query ContactQuery {
-    strapiContact {
-      seo {
-        titulo
-        descripcion
-        imagen
-      }
-      principal {
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 630)
+    strapiContactoPopulateDeep {
+      data {
+        attributes {
+          principal {
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 630)
+                    }
+                  }
+                  alternativeText
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
         }
       }
     }

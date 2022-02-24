@@ -14,6 +14,7 @@ import {
 import "../pages/blog.scss";
 
 const BlogTemplate = ({ data }) => {
+
   const isBrowser = typeof window !== "undefined";
   const viewUrl = () => {
     if (!isBrowser) {
@@ -23,6 +24,8 @@ const BlogTemplate = ({ data }) => {
   };
   return (
     <Layout>
+      <div>{console.log(data)}</div>
+      {/* <div>{console.log(dataSource)}</div>
       <Seo
         title={data.strapiArticulos.titulo}
         description={data.strapiArticulos.descripcion}
@@ -57,7 +60,7 @@ const BlogTemplate = ({ data }) => {
             <TwitterIcon size={28} />
           </TwitterShareButton>
         </div>
-      </article>
+      </article> */}
     </Layout>
   );
 };
@@ -65,20 +68,26 @@ const BlogTemplate = ({ data }) => {
 export default BlogTemplate;
 
 export const query = graphql`
-  query ArticuloTemplateQuery($id: String) {
-    strapiArticulos(id: { eq: $id }) {
-      titulo
-      descripcion
-      imagen {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(width: 1280)
+  query ArticuloTemplateQuery($id: String!) {
+    strapiArticulosPopulateDeep2(id: { eq: $id }) {
+      data { 
+        attributes {
+          titulo
+          descripcion
+          slug
+          imagen {
+            data {
+              attributes {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(width: 1280)
+                  }
+                }
+              }
+            }
           }
         }
-      }
-      seo_imagen {
-        texto_alternativo
-        titulo
       }
     }
   }

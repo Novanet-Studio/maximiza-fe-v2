@@ -2,6 +2,13 @@ require("dotenv").config({
   path: `.env`,
 });
 
+/*
+ Nivel de profundidad para estructuras hechas a partir de components y dynamic zones de Strapi.
+ Más información en https://www.npmjs.com/package/strapi-plugin-populate-deep
+*/
+const pd = `?populate=deep`;
+const pd2 = `?populate=deep,2`;
+
 module.exports = {
   siteMetadata: {
     title: `Maximiza - Asesoría de inversión`,
@@ -35,7 +42,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        defaults: {       
+        defaults: {
           formats: [`auto`, `webp`],
           placeholder: `blurred`,
           quality: 100,
@@ -61,18 +68,18 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL,
-        collectionTypes: ["articulos"],
+        collectionTypes: [`articulos${pd2}`],
         singleTypes: [
-          "blog",
-          "contact",
-          "educacion",
-          "empresa",
-          "home",
-          "legal",
-          "servicios",
-          "private-equity",
-          "responsabilidad",
-          "medios",
+          `blog${pd}`,
+          `capital${pd}`,
+          `contacto${pd}`,
+          `educacion${pd}`,
+          `empresa${pd}`,
+          `home${pd}`,
+          `legal${pd}`,
+          `medio${pd}`,
+          `responsabilidad${pd}`,
+          `servicio${pd}`,
         ],
         queryLimit: 1000,
       },

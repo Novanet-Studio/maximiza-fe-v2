@@ -9,41 +9,35 @@ import Flecha from "../assets/images/dropdown.svg";
 import "./responsabilidad.scss";
 
 const Responsabilidad = ({ data }) => {
+  const dataSource = data.strapiResponsabilidadPopulateDeep.data.attributes;
   return (
     <Layout>
       <Seo
-        title={data.strapiResponsabilidad.seo.titulo}
-        description={data.strapiResponsabilidad.seo.descripcion}
-        image={data.strapiResponsabilidad.seo.imagen}
+        title="Responsabilidad"
+        description="Contamos con la generación de dividendos para la empresa y el planteamiento del impacto social."
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_responsabilidad_6a5213385e.jpg"
       />
       <section className="principal">
         <div className="columna columna--izq">
-          <h1 className="principal__titulo">
-            {data.strapiResponsabilidad.principal.titulo}
-          </h1>
+          <h1 className="principal__titulo">{dataSource.principal.titulo}</h1>
           <ReactMarkdown
             className="principal__texto"
-            children={data.strapiResponsabilidad.principal.contenido}
+            children={dataSource.principal.contenido}
             skipHtml={false}
           />
         </div>
         <div className="columna columna--der">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(
-              data.strapiResponsabilidad.principal.imagen.localFile
-            )}
-            alt={
-              data.strapiResponsabilidad.principal.seo_imagen.texto_alternativo
-            }
-            title={data.strapiResponsabilidad.principal.seo_imagen.titulo}
+            image={getImage(dataSource.principal.imagen.data.attributes.localFile)}
+            alt={dataSource.principal.imagen.data.attributes.alternativeText}
           />
         </div>
       </section>
       <section className="contribuciones">
-        <h2>{data.strapiResponsabilidad.contribucion_titulo}</h2>
+        <h2>{dataSource.contribucion_titulo}</h2>
         <ul className="contribuciones__lista">
-          {data.strapiResponsabilidad.contribuciones_secciones.map((item) => (
+          {dataSource.contribuciones_secciones.map((item) => (
             <li key={item.id} className="contribuciones__item">
               <h3 className="contribuciones__titulo">{item.titulo}</h3>
               <ReactMarkdown
@@ -64,7 +58,7 @@ const Responsabilidad = ({ data }) => {
         <h2 className="causas__titulo">Causas que apoyamos</h2>
         <ReactMarkdown
           className="descripcion"
-          children={data.strapiResponsabilidad.colaboracion_texto}
+          children={dataSource.colaboracion_texto}
           remarkPlugins={[remarkGfm]}
           skipHtml={false}
         />
@@ -115,34 +109,34 @@ export default Responsabilidad;
 
 export const query = graphql`
   query ResponsabilidadQuery {
-    strapiResponsabilidad {
-      seo {
-        titulo
-        descripcion
-        imagen
-      }
-      principal {
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 630)
+    strapiResponsabilidadPopulateDeep {
+      data {
+        attributes {
+          principal {
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 630)
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
+          contribucion
+          contribuciones_secciones {
+            id
+            titulo
+            contenido
+          }
+          colaboracion_texto
         }
       }
-      contribucion_titulo
-      contribuciones_secciones {
-        id
-        titulo
-        contenido
-      }
-      colaboracion_texto
     }
   }
 `;

@@ -11,48 +11,47 @@ import Cta from "../components/ctaInformacion";
 import "./servicios.scss";
 
 const Servicios = ({ data }) => {
+  const dataSource = data.strapiServicioPopulateDeep.data.attributes;
   const [targetModal, setTargetModal] = useState("");
 
   return (
     <Layout>
       <Seo
-        title={data.strapiServicios.seo.titulo}
-        description={data.strapiServicios.seo.descripcion}
-        image={data.strapiServicios.seo.imagen}
+        title="Maximiza inversiones en la bolsa"
+        description="Ofrecemos diferentes estrategias financieras para gestionar sus inversiones  en la bolsa de valores."
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300655/maximiza/uploads/maximiza_com_ve_servicios_b404e81273.jpg"
       />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">
             <ReactMarkdown
-              children={data.strapiServicios.principal.titulo}
+              children={dataSource.principal.titulo}
               remarkPlugins={[remarkGfm]}
               skipHtml={false}
               linkTarget="_blank"
             />
           </h1>
           <p className="principal__texto">
-            {data.strapiServicios.principal.contenido}
+            {dataSource.principal.contenido}
           </p>
         </div>
         <div className="columna columna--der">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(data.strapiServicios.principal.imagen.localFile)}
-            title={data.strapiServicios.principal.seo_imagen.titulo}
-            alt={data.strapiServicios.principal.seo_imagen.texto_alternativo}
+            image={getImage(dataSource.principal.imagen.data.attributes.localFile)} 
+            alt={dataSource.principal.imagen.data.attributes.alternativeText}
           />
         </div>
       </section>
       <section className="inversionista">
-        {data.strapiServicios.inversionista.map((item) => (
+        {dataSource.inversionista.map((item) => (
           <div className="inversionista__grupo" key={item.id}>
             <div className="inversionista__cabecera">
               <h3 className="inversionista__titulo">{item.nombre}</h3>
               <GatsbyImage
                 className="inversionista__imagen"
-                image={getImage(item.imagen.localFile)}
-                title={item.seo_imagen.titulo}
-                alt={item.seo_imagen.texto_alternativo}
+                image={getImage(item.imagen.data.attributes.localFile)}
+                alt={item.imagen.data.attributes.alternativeText}
               />
             </div>
             <ul className="inversionista__contenido">
@@ -64,7 +63,7 @@ const Servicios = ({ data }) => {
                 >
                   <GatsbyImage
                     className="inversionista__icono"
-                    image={getImage(element.icono.localFile)}
+                    image={getImage(element.icono.data.attributes.localFile)}
                     alt="Iconos servicos"
                   />
                   <h4 className="inversionista__subtitulo">{element.titulo}</h4>
@@ -80,7 +79,9 @@ const Servicios = ({ data }) => {
                     </strong>
                     <ReactMarkdown
                       className="inversionista__descripcion"
-                      children={element.contenido.substring(0, 200).concat("...")}
+                      children={element.contenido
+                        .substring(0, 200)
+                        .concat("...")}
                       skipHtml={false}
                     />
                     <button
@@ -133,49 +134,54 @@ export default Servicios;
 
 export const query = graphql`
   query ServiciosQuery {
-    strapiServicios {
-      seo {
-        titulo
-        descripcion
-        imagen
-      }
-      principal {
-        titulo
-        contenido
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 630)
+    strapiServicioPopulateDeep {
+      data {
+        attributes {
+          principal {
+            titulo
+            contenido
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 630)
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
-        }
-      }
-      inversionista {
-        id
-        nombre
-        imagen {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 320)
+          inversionista {
+            id
+            nombre
+            imagen {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData(width: 320)
+                    }
+                  }
+                }
+              }
             }
-          }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
-        }
-        items {
-          id
-          titulo
-          contenido
-          icono {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 320)
+            items {
+              id
+              titulo
+              contenido
+              icono {
+                data {
+                  attributes {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData(width: 320)
+                      }
+                    }
+                  }
+                }
               }
             }
           }
