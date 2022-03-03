@@ -8,9 +8,23 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               data {
                 attributes {
+                  titulo
+                  descripcion
                   slug
+                  imagen {
+                    data {
+                      attributes {
+                        alternativeText
+                        url
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData(width: 1280)
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
-                id
               }
             }
           }
@@ -23,17 +37,17 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const articulos = result.data.allStrapiArticulosPopulateDeep2.edges[0].node.data;
-  const articuloTemplate = require.resolve("./src/templates/articulo.js"); 
+  const articulos =
+    result.data.allStrapiArticulosPopulateDeep2.edges[0].node.data;
+  const articuloTemplate = require.resolve("./src/templates/articulo.js");
 
-  articulos.forEach((articulo) => {
+  articulos.forEach((item) => {
     createPage({
-      path: `/blog/${articulo.attributes.slug}`,
+      path: `/blog/${item.attributes.slug}`,
       component: articuloTemplate,
       context: {
-        id: articulo.id,
+        articulo: item,
       },
     });
   });
 };
-

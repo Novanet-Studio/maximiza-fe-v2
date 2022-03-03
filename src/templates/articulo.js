@@ -1,6 +1,6 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import Layout from "../layout/layout";
 import Seo from "../components/seo";
 import ReactMarkdown from "react-markdown";
@@ -13,8 +13,8 @@ import {
 } from "react-share";
 import "../pages/blog.scss";
 
-const BlogTemplate = ({ data }) => {
-
+const ArticuloTemplate = ({ pageContext }) => {
+  const { articulo } = pageContext;
   const isBrowser = typeof window !== "undefined";
   const viewUrl = () => {
     if (!isBrowser) {
@@ -24,12 +24,10 @@ const BlogTemplate = ({ data }) => {
   };
   return (
     <Layout>
-      <div>{console.log(data)}</div>
-      {/* <div>{console.log(dataSource)}</div>
       <Seo
-        title={data.strapiArticulos.titulo}
-        description={data.strapiArticulos.descripcion}
-        image={data.strapiArticulos.imagen.publicURL}
+        title={articulo.attributes.titulo}
+        description={articulo.attributes.descripcion}
+        image={articulo.attributes.imagen.data.attributes.url}
       />
       <section className="articulo__principal">
         <Link className="articulo__boton-regreso" to="/blog">
@@ -37,17 +35,16 @@ const BlogTemplate = ({ data }) => {
         </Link>
         <GatsbyImage
           className="articulo__imagen"
-          image={getImage(data.strapiArticulos.imagen.localFile)}
-          alt={data.strapiArticulos.seo_imagen.texto_alternativo}
-          title={data.strapiArticulos.seo_imagen.titulo}
+          image={getImage(articulo.attributes.imagen.data.attributes.localFile)}
+          alt={articulo.attributes.imagen.data.attributes.alternativetext}
         />
-        <h1 className="articulo__titulo">{data.strapiArticulos.titulo}</h1>
+        <h1 className="articulo__titulo">{articulo.attributes.titulo}</h1>
       </section>
 
       <article className="articulo">
         <ReactMarkdown
           className="articulo__descripcion"
-          children={data.strapiArticulos.descripcion}
+          children={articulo.attributes.descripcion}
           remarkPlugins={[remarkGfm]}
           skipHtml={false}
         />
@@ -60,35 +57,9 @@ const BlogTemplate = ({ data }) => {
             <TwitterIcon size={28} />
           </TwitterShareButton>
         </div>
-      </article> */}
+      </article>
     </Layout>
   );
 };
 
-export default BlogTemplate;
-
-export const query = graphql`
-  query ArticuloTemplateQuery($id: String!) {
-    strapiArticulosPopulateDeep2(id: { eq: $id }) {
-      data { 
-        attributes {
-          titulo
-          descripcion
-          slug
-          imagen {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(width: 1280)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+export default ArticuloTemplate;

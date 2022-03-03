@@ -68,6 +68,7 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL,
+        accessToken: process.env.API_TOKEN_SALT,
         collectionTypes: [`articulos${pd2}`],
         singleTypes: [
           `blog${pd}`,
