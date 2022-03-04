@@ -28,9 +28,20 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "G-4W17JXKS6P",
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-4W17JXKS6P", // GA4
+        ],
+        /* gtagConfig: {
+          optimize_id: "GTM-5LFLQGT",
+          anonymize_ip: true,
+          cookie_expires: 0,
+        }, */
+        pluginConfig: {
+          head: true,
+        },
       },
     },
     `gatsby-plugin-transition-link`,
