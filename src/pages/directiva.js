@@ -43,7 +43,7 @@ const Directiva = ({ data }) => {
         </div>
       </section>
       <section className="secciones">
-        <Accordion>
+        <Accordion allowZeroExpanded={true}>
           {secciones.map((seccion) => (
             <AccordionItem key={seccion.id}>
               <AccordionItemHeading className="accordion__heading">
