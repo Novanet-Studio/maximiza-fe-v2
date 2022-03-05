@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -70,14 +70,14 @@ const Index = ({ data }) => {
           {dataSource.servicios.map((item) => (
             <li className="servicios__item" key={item.id}>
               <h3 className="servicios__subtitulo">{item.titulo}</h3>
-              <p className="servicios__descripcion">
-                {item.contenido}
-              </p>
-              <GatsbyImage
-                className="servicios__imagen"
-                image={getImage(item.imagen.data.attributes.localFile)}
-                alt={item.imagen.data.attributes.alternativeText}
-              />
+              <p className="servicios__descripcion">{item.contenido}</p>
+              <Link to={item.link}>
+                <GatsbyImage
+                  className="servicios__imagen"
+                  image={getImage(item.imagen.data.attributes.localFile)}
+                  alt={item.imagen.data.attributes.alternativeText}
+                />
+              </Link>
             </li>
           ))}
         </ul>
@@ -85,8 +85,7 @@ const Index = ({ data }) => {
       <section className="contacto">
         <h2 className="contacto__titulo">{dataSource.contacto_titulo}</h2>
         <p className="contacto__descripcion">
-          Si desea mayor información de nuestros servicios, escríbanos y nos
-          comunicaremos con usted a la brevedad posible.
+          {dataSource.contacto_descripcion}
         </p>
         <form
           className="form"
@@ -155,6 +154,7 @@ export const query = graphql`
             id
             titulo
             contenido
+            link
             imagen {
               data {
                 attributes {
@@ -174,6 +174,8 @@ export const query = graphql`
             id
             contenido
           }
+          contacto_titulo
+          contacto_descripcion
         }
       }
     }

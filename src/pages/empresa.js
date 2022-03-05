@@ -119,7 +119,34 @@ const Empresa = ({ data }) => {
                 <li className="balances__item" key={element.id}>
                   <a
                     className="balances__boton"
-                    href={element.archivo_descarga}
+                    href={element.descarga}
+                    download
+                  >
+                    <FontAwesomeIcon
+                      icon={["fas", "download"]}
+                      fixedWidth
+                      size="1x"
+                    />
+                    {element.mes}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      <section className="balances">
+        <h2>Balances mensuales</h2>
+        {dataSource.balances_auditados.map((item) => (
+          <div className="balances__grupo" key={item.id}>
+            <h3 className="balances__subtitulo">{item.ano}</h3>
+            <ul className="balances__lista">
+              {item.mes.map((element) => (
+                <li className="balances__item" key={element.id}>
+                  <a
+                    className="balances__boton"
+                    href={element.descarga}
                     download
                   >
                     <FontAwesomeIcon
@@ -205,6 +232,15 @@ export const query = graphql`
             }
           }
           balances {
+            id
+            ano
+            mes {
+              id
+              mes
+              descarga
+            }
+          }
+          balances_auditados {
             id
             ano
             mes {

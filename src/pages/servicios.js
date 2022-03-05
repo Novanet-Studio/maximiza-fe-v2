@@ -45,7 +45,7 @@ const Servicios = ({ data }) => {
       </section>
       <section className="inversionista">
         {dataSource.inversionista.map((item) => (
-          <div className="inversionista__grupo" key={item.id}>
+          <div className="inversionista__grupo" key={item.id} id={item.identidad}>
             <div className="inversionista__cabecera">
               <h3 className="inversionista__titulo">{item.nombre}</h3>
               <GatsbyImage
@@ -59,7 +59,7 @@ const Servicios = ({ data }) => {
                 <li
                   className="inversionista__item"
                   key={element.id}
-                  data-id={element.id}
+                  data-id={element.id}                  
                 >
                   <GatsbyImage
                     className="inversionista__icono"
@@ -156,6 +156,7 @@ export const query = graphql`
           inversionista {
             id
             nombre
+            identidad
             imagen {
               data {
                 attributes {

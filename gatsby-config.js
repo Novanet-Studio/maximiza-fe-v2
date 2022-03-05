@@ -85,6 +85,7 @@ module.exports = {
           `blog${pd}`,
           `capital${pd}`,
           `contacto${pd}`,
+          `directiva${pd}`,
           `educacion${pd}`,
           `empresa${pd}`,
           `home${pd}`,

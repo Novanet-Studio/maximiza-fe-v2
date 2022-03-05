@@ -10,6 +10,7 @@ const navigation = () => (
         <div className="nav__dropdown">
           <LinkNav estilo="nav__link" text="Empresa" to="/empresa" />
           <LinkNav estilo="nav__link" text="Servicios" to="/servicios" direction="left" />
+          <LinkNav estilo="nav__link" text="Directiva" to="/directiva" />
           <LinkNav estilo="nav__link" text="Contacto" to="/contacto" />
         </div>
       </div>
