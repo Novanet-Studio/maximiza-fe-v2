@@ -137,7 +137,7 @@ const Empresa = ({ data }) => {
       </section>
 
       <section className="balances">
-        <h2>Balances mensuales</h2>
+        <h2>Balances auditados</h2>
         {dataSource.balances_auditados.map((item) => (
           <div className="balances__grupo" key={item.id}>
             <h3 className="balances__subtitulo">{item.ano}</h3>
