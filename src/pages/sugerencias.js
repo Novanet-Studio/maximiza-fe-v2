@@ -92,8 +92,8 @@ const Sugerencias = ({ data }) => {
           <form
             className="datos__form"
             data-netlify="true"
-            name="sugerencias"    
-            action="/gracias/"     
+            name="sugerencias"
+            action="/gracias/"
           >
             <label>
               <input type="hidden" name="bot-field" />
@@ -131,7 +131,7 @@ const Sugerencias = ({ data }) => {
               type="number"
               name="telefono"
               placeholder="Teléfono"
-              className="datos__input"  
+              className="datos__input"
             />
 
             <textarea
@@ -154,7 +154,6 @@ const Sugerencias = ({ data }) => {
               value="Enviar mensaje ➤"
             />
           </form>
-          <p class="result">Mensaje enviado</p>
         </div>
       </section>
     </Layout>
