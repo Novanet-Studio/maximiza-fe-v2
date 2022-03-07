@@ -93,6 +93,7 @@ module.exports = {
           `medio${pd}`,
           `responsabilidad${pd}`,
           `servicio${pd}`,
+          `sugerencia${pd}`
         ],
         queryLimit: 1000,
       },

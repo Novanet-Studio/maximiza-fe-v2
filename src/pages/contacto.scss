@@ -56,6 +56,20 @@
     background: $verde1;
     border: none;
   }
+
+  &__button-a {
+    color: $gris2;
+    background: $gris5;    
+  }
+
+  &__file {
+    display: none;
+    
+  }
+
+  &__generico {
+    margin: 3vh 0 2vh;
+  }
 }
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
@@ -245,6 +259,10 @@
       font-size: 1rem;
       padding: 3vh 3.3vh 3.5vh;
       margin: 3.5vh auto;
+    }
+    &__button-a { 
+      padding: 2vh;    
+      margin-top: 12vh;    
     }
     &__button-icon {
       width: 4vh;

@@ -22,7 +22,6 @@ const Directiva = ({ data }) => {
 
   return (
     <Layout>
-      <div>{console.log(secciones)}</div>
       <Seo
         title="Junta directiva"
         description={principal.contenido}
