@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../layout/layout";
@@ -13,58 +12,8 @@ import "./contacto.scss";
 // add fas and fab to the library
 library.add(fab);
 
-const GETFORM_FORM_ENDPOINT = process.env.GETFORM_ENDPOINT;
-
 const Sugerencias = ({ data }) => {
   const dataSource = data.strapiSugerenciaPopulateDeep.data.attributes;
-  const [formStatus, setFormStatus] = useState(false);
-  const [query, setQuery] = useState({
-    name: "",
-    email: "",
-  });
-
-  const handleFileChange = () => (e) => {
-    setQuery((prevState) => ({
-      ...prevState,
-      files: e.target.files[0],
-    }));
-  };
-
-  const handleChange = () => (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setQuery((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    Object.entries(query).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
-
-    axios
-      .post(GETFORM_FORM_ENDPOINT, formData, {
-        headers: { Accept: "application/json" },
-      })
-      .then(function (response) {
-        setFormStatus(true);
-        setQuery({
-          nombre: "",
-          cedula: "",
-          rif: "",
-          email:"",
-          message:"",
-        });
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   return (
     <Layout>
@@ -141,69 +90,63 @@ const Sugerencias = ({ data }) => {
         </div>
         <div className="columna columna--der">
           <form
-            acceptCharset="UTF-8"
+            className="datos__form"
             method="POST"
-            encType="multipart/form-data"
-            id="gatsbyForm"
-            onSubmit={handleSubmit}
+            data-netlify="true"
+            name="contacto"
+            action="/gracias/"
           >
+            <label>
+              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="form-name" value="contacto" />
+            </label>
+
             <input
               type="text"
-              className="datos__input"
+              name="name"
               placeholder="Nombre y apellido"
-              required
-              name="nombre"
-              value={query.name}
-              onChange={handleChange()}
-            />
-
-            <input
-              type="text"
               className="datos__input"
-              placeholder="Cédula de identidad"
-              required
+            />
+            <input
+              type="number"
               name="cedula"
-              min="7"
-              max="9"
-              value={query.name}
-              onChange={handleChange()}
+              placeholder="Cédula de identidad"
+              className="datos__input"
+              min={6}
+              max={10}
             />
 
             <input
               type="text"
-              className="datos__input"
-              placeholder="RIF"
-              required
               name="rif"
-              value={query.name}
-              onChange={handleChange()}
+              placeholder="RIF"
+              className="datos__input"
+              min={6}
+              max={10}
             />
 
             <input
               type="email"
-              className="datos__input"
-              placeholder="Correo"
-              required
               name="email"
-              value={query.email}
-              onChange={handleChange()}
+              placeholder="Correo"
+              className="datos__input"
+            />
+
+            <input
+              type="number"
+              name="telefono"
+              placeholder="Teléfono"
+              className="datos__input"     
+              max={10}
             />
 
             <textarea
               name="message"
               className="datos__textarea"
               placeholder="Descripción"
-              rows="3"
             />
 
-            <input
-              id="d01"
-              name="file"
-              className="datos__file"
-              type="file"
-              placeholder="Select a file to upload"
-              onChange={handleFileChange()}
-            />
+            <input id="d01" name="file" className="datos__file" type="file" />
 
             <div className="datos__generico">
               <label htmlFor="d01" className="datos__button datos__button-a">
@@ -211,16 +154,11 @@ const Sugerencias = ({ data }) => {
               </label>
             </div>
 
-            {formStatus ? (
-              <div className="text-success mb-2">
-                Su mensaje ha sido enviado.
-              </div>
-            ) : (
-              ""
-            )}
-            <button type="submit" className="datos__button">
-              Enviar mensaje
-            </button>
+            <input
+              type="submit"
+              className="datos__button"
+              value="Enviar mensaje ➤"
+            />
           </form>
         </div>
       </section>

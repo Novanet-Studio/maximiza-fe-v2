@@ -69,6 +69,7 @@
 
   &__generico {
     margin: 3vh 0 2vh;
+    width: 100%;
   }
 }
 
@@ -240,7 +241,7 @@
       width: 89%;
     }
     &__form {
-      justify-content: flex-end;
+     
       margin: 0 0 0 2vh;
     }
     &__input {
