@@ -93,7 +93,7 @@ const Sugerencias = ({ data }) => {
             className="datos__form"
             method="POST"
             data-netlify="true"
-            name="contacto"
+            name="sugerencias"
             action="/gracias/"
           >
             <label>
@@ -121,8 +121,6 @@ const Sugerencias = ({ data }) => {
               name="rif"
               placeholder="RIF"
               className="datos__input"
-              min={6}
-              max={10}
             />
 
             <input
@@ -136,8 +134,7 @@ const Sugerencias = ({ data }) => {
               type="number"
               name="telefono"
               placeholder="Teléfono"
-              className="datos__input"     
-              max={10}
+              className="datos__input"  
             />
 
             <textarea
