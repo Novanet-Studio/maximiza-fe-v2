@@ -93,8 +93,7 @@ const Sugerencias = ({ data }) => {
             className="datos__form"
             encType="multipart/form-data"
             data-netlify="true"
-            name="sugerencias"
-            action="/gracias/"
+            name="sugerencias"         
           >
             <label>
               <input type="hidden" name="bot-field" />
@@ -112,8 +111,6 @@ const Sugerencias = ({ data }) => {
               name="cedula"
               placeholder="Cédula de identidad"
               className="datos__input"
-              min={6}
-              max={10}
             />
 
             <input
@@ -157,6 +154,7 @@ const Sugerencias = ({ data }) => {
               value="Enviar mensaje ➤"
             />
           </form>
+          <p class="result">Mensaje enviado</p>
         </div>
       </section>
     </Layout>
