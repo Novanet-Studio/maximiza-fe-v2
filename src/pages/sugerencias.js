@@ -18,8 +18,8 @@ const Sugerencias = ({ data }) => {
   return (
     <Layout>
       <Seo
-        title="Contacto"
-        description="Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros."
+        title="Maximiza - Sugerencias"
+        description="Envienos sus quejas, reclamos y/o sugerencias sobre temas de nuestra competencia."
         image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300646/maximiza/uploads/maximiza_com_ve_contacto_5d0c32ef6a.jpg"
       />
       <section className="principal">
@@ -91,9 +91,9 @@ const Sugerencias = ({ data }) => {
         <div className="columna columna--der">
           <form
             className="datos__form"
-            encType="multipart/form-data"
             data-netlify="true"
-            name="sugerencias"         
+            name="sugerencias"    
+            action="/gracias/"     
           >
             <label>
               <input type="hidden" name="bot-field" />
