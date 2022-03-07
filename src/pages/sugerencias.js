@@ -92,7 +92,6 @@ const Sugerencias = ({ data }) => {
           <form
             className="datos__form"
             name="sugerencias"
-            method="POST"
             enctype="multipart/form-data"
             data-netlify="true"
             action="/gracias/"
