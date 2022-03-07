@@ -99,7 +99,7 @@ const Sugerencias = ({ data }) => {
           >
             <label>
               <input type="hidden" name="bot-field" />
-              <input type="hidden" name="form-name" value="contacto" />
+              <input type="hidden" name="form-name" value="sugerencias" />
             </label>
 
             <input
