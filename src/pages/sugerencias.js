@@ -15,24 +15,25 @@ library.add(fab);
 const Sugerencias = ({ data }) => {
   const dataSource = data.strapiSugerenciaPopulateDeep.data.attributes;
   const isBrowser = typeof document !== "undefined";
-  const inputsContainer = document.getElementById("Fields");
-  const removeButton = document.getElementById("Remove");
 
   const addInput = () => {
     if (!isBrowser) {
       return;
     }
+    const inputsContainer = document.getElementById("Fields");
+    const removeButton = document.getElementById("Remove");
+
     let count = inputsContainer.getElementsByTagName("div").length;
     inputsContainer.insertAdjacentHTML(
       "afterbegin",
       `<div>
-    <input
-      id=${"id0" + count}
-      name="file"
-      class="datos__file"
-      type="file"
-    />
-  </div>`
+        <input
+          id=${"id0" + count}
+          name="file"
+          class="datos__file"
+          type="file"
+        />
+      </div>`
     );
     removeButton.disabled = false;
   };
@@ -41,6 +42,9 @@ const Sugerencias = ({ data }) => {
     if (!isBrowser) {
       return;
     }
+
+    const inputsContainer = document.getElementById("Fields");
+    const removeButton = document.getElementById("Remove");
 
     let count = inputsContainer.getElementsByTagName("div").length;
     count > 1
