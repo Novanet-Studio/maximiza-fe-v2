@@ -29,7 +29,7 @@ const Sugerencias = ({ data }) => {
       `<div>
         <input
           id=${"id0" + count}
-          name="file"
+          name=${"file" + count}
           class="datos__file"
           type="file"
         />
