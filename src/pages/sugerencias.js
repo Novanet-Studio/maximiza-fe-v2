@@ -15,6 +15,32 @@ library.add(fab);
 const Sugerencias = ({ data }) => {
   const dataSource = data.strapiSugerenciaPopulateDeep.data.attributes;
 
+  const inputsContainer = document.getElementById("Fields");
+  const removeButton = document.getElementById("Remove");
+
+  const addInput = () => {
+    let count = inputsContainer.getElementsByTagName("div").length;
+    inputsContainer.insertAdjacentHTML(
+      "afterbegin",
+      `<div>
+    <input
+      id=${"id0" + count}
+      name="file"
+      class="datos__file"
+      type="file"
+    />
+  </div>`
+    );
+    removeButton.disabled = false;
+  };
+
+  const removeInput = () => {
+    let count = inputsContainer.getElementsByTagName("div").length;
+    count > 1
+      ? inputsContainer.removeChild(inputsContainer.lastChild)
+      : (removeButton.disabled = true);
+  };
+
   return (
     <Layout>
       <Seo
@@ -108,6 +134,7 @@ const Sugerencias = ({ data }) => {
               placeholder="Nombre y apellido"
               className="datos__input"
             />
+
             <input
               type="number"
               name="cedula"
@@ -141,13 +168,36 @@ const Sugerencias = ({ data }) => {
               className="datos__textarea"
               placeholder="Descripción"
             />
-
-            <input id="d01" name="file" className="datos__file" type="file" />
-
-            <div className="datos__generico">
-              <label htmlFor="d01" className="datos__button datos__button-a">
-                Adjuntar documentos que avalen el mensaje.
-              </label>
+            <div className="datos__archivo">
+              <small>
+                Agregue un campo por cada documento que avale el contenido del
+                mensaje.
+              </small>
+            </div>
+            <button
+              className="datos__buttonFile datos__buttonFile-add"
+              type="button"
+              onClick={() => addInput()}
+            >
+              Añadir campo
+            </button>
+            <button
+              id="Remove"
+              className="datos__buttonFile datos__buttonFile-remove"
+              type="button"
+              onClick={() => removeInput()}
+            >
+              Quitar campo
+            </button>
+            <div className="datos__archivo" id="Fields">
+              <div>
+                <input
+                  id="id00"
+                  name="file"
+                  className="datos__file"
+                  type="file"
+                />
+              </div>
             </div>
 
             <input
