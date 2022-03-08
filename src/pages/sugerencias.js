@@ -14,15 +14,15 @@ library.add(fab);
 
 const Sugerencias = ({ data }) => {
   const dataSource = data.strapiSugerenciaPopulateDeep.data.attributes;
+  if (typeof document !== "undefined") {
+    const inputsContainer = document.getElementById("Fields");
+    const removeButton = document.getElementById("Remove");
 
-  const inputsContainer = document.getElementById("Fields");
-  const removeButton = document.getElementById("Remove");
-
-  const addInput = () => {
-    let count = inputsContainer.getElementsByTagName("div").length;
-    inputsContainer.insertAdjacentHTML(
-      "afterbegin",
-      `<div>
+    const addInput = () => {
+      let count = inputsContainer.getElementsByTagName("div").length;
+      inputsContainer.insertAdjacentHTML(
+        "afterbegin",
+        `<div>
     <input
       id=${"id0" + count}
       name="file"
@@ -30,16 +30,17 @@ const Sugerencias = ({ data }) => {
       type="file"
     />
   </div>`
-    );
-    removeButton.disabled = false;
-  };
+      );
+      removeButton.disabled = false;
+    };
 
-  const removeInput = () => {
-    let count = inputsContainer.getElementsByTagName("div").length;
-    count > 1
-      ? inputsContainer.removeChild(inputsContainer.lastChild)
-      : (removeButton.disabled = true);
-  };
+    const removeInput = () => {
+      let count = inputsContainer.getElementsByTagName("div").length;
+      count > 1
+        ? inputsContainer.removeChild(inputsContainer.lastChild)
+        : (removeButton.disabled = true);
+    };
+  }
 
   return (
     <Layout>

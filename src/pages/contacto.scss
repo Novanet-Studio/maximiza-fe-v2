@@ -75,7 +75,7 @@
 
   &__archivo {
     margin: 0;
-    width: 100%;
+    width: 98%;
     & > div {
       margin-top: 2vh;
     }
@@ -120,7 +120,7 @@
     &__button {
       font-size: 0.8rem;
       padding: 2.5vh 3vh 3vh 3vh;
-      margin: 2.5vh auto;
+      margin-top: 2.5vh;
       img {
         width: 3.5vh;
         margin-bottom: -0.5vh;
@@ -169,9 +169,7 @@
     &__button {
       font-size: 0.8rem;
       padding: 5.5vh 5vh 6vh 5vh;
-      // margin: 0 auto;
-      margin-left: auto;
-      margin-right: auto;
+      margin-top: 3vh;
     }
 
     &__button-icon {
@@ -202,7 +200,6 @@
       line-height: 1.3rem;
     }
     &__form {
-      justify-content: flex-end;
       margin: 5vh 0 0 2vh;
     }
     &__input {

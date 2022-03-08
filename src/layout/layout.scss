@@ -273,6 +273,10 @@ img {
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @include min-media(768px, portrait) {
+  .mobileMenu {
+    display: none;
+  }
+  
   .principal {
     // Por revisar
     .logo--interno {
