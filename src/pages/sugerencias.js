@@ -204,7 +204,7 @@ const Sugerencias = ({ data }) => {
               <div>
                 <input
                   id="id00"
-                  name="file"
+                  name="file_0"
                   className="datos__file"
                   type="file"
                 />
@@ -212,7 +212,7 @@ const Sugerencias = ({ data }) => {
               <div>
                 <input
                   id="id01"
-                  name="file"
+                  name="file_1"
                   className="datos__file"
                   type="file"
                 />
@@ -220,7 +220,7 @@ const Sugerencias = ({ data }) => {
               <div>
                 <input
                   id="id02"
-                  name="file"
+                  name="file_2"
                   className="datos__file"
                   type="file"
                 />
