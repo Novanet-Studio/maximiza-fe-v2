@@ -25,7 +25,7 @@ const Directiva = ({ data }) => {
       <Seo
         title="Junta directiva"
         description={principal.contenido}
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_inicio_289286fe23.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_directiva_miniatura_c37955065e.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

@@ -22,7 +22,7 @@ const Legal = ({ data }) => {
       <Seo
         title="Maximiza: Legitimación de capitales"
         description="Las instituciones financieras pueden usarse para la legitimación de capitales, ¿cómo prevenir que eso ocurra?"
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300649/maximiza/uploads/maximiza_com_ve_legal_289ff17503.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_cumplimiento_miniatura_3c4db9b532.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">
@@ -35,7 +35,7 @@ const Legal = ({ data }) => {
             image={getImage(
               dataSource.principal.imagen.data.attributes.localFile
             )}
-            alt={dataSource.principal.imagen.data.attributes.aternativeText}
+            alt={dataSource.principal.imagen.data.attributes.alternativeText}
           />
         </div>
       </section>

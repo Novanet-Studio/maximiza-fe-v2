@@ -23,7 +23,7 @@ const Empresa = ({ data }) => {
       <Seo
         title="Maximiza para invertir en la bolsa"
         description="Somos una casa de bolsa que ofrece herramientas para invertir en la bolsa y gestionar instrumentos financieros."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300650/maximiza/uploads/maximiza_com_ve_empresa_b3078cdf55.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_empresa_miniatura_2ef6217989.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">
@@ -222,6 +222,7 @@ export const query = graphql`
             imagen {
               data {
                 attributes {
+                  alternativeText
                   localFile {
                     childImageSharp {
                       gatsbyImageData(width: 375)

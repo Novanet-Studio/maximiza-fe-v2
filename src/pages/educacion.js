@@ -15,7 +15,7 @@ const Educacion = ({ data }) => {
       <Seo
         title="Educación en corretaje de títulos valores"
         description="Somos pioneros en ofrecer programas de capacitación para mejorar la educación financiera en Venezuela."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_educacion_608b46f928.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_educacion_miniatura_5a3e3b347e.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

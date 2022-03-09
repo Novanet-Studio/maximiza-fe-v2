@@ -15,7 +15,7 @@ const Blog = ({ data }) => {
       <Seo
         title="Maximiza: Artículos con información financiera"
         description="{data.strapiBlog.descripcion}"
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300636/maximiza/uploads/maximiza_com_ve_blog_e20e9516c2.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_blog_miniatura_7827d40e96.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

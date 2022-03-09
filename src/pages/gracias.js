@@ -12,7 +12,7 @@ const dataSource = data.strapiContactoPopulateDeep.data.attributes
       <Seo
         title="Gracias por enviar su mensaje"
         description="Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_inicio_289286fe23.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847323/maximiza/v4/maximiza_inicio_miniatura_7b38641a3d.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

@@ -15,7 +15,7 @@ const Responsabilidad = ({ data }) => {
       <Seo
         title="Responsabilidad"
         description="Contamos con la generación de dividendos para la empresa y el planteamiento del impacto social."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_responsabilidad_6a5213385e.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_responsabilidad_miniatura_cd2b3fa7fc.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

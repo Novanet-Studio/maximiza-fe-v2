@@ -26,7 +26,9 @@ const ArticuloTemplate = ({ pageContext }) => {
     <Layout>
       <Seo
         title={articulo.attributes.titulo}
-        description={articulo.attributes.descripcion}
+        description={articulo.attributes.descripcion
+          .replace(/(?:__|[*#])|\[(.*?)\]\(.*?\)/gm, "$1")
+          .substring(0, 158)}
         image={articulo.attributes.imagen.data.attributes.url}
       />
       <section className="articulo__principal">

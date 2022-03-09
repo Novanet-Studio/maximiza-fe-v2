@@ -20,7 +20,7 @@ const Contacto = ({ data }) => {
       <Seo
         title="Maximiza: contacto"
         description="Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300646/maximiza/uploads/maximiza_com_ve_contacto_5d0c32ef6a.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_contacto_miniatura_7e7d7d94e8.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

@@ -14,51 +14,13 @@ library.add(fab);
 
 const Sugerencias = ({ data }) => {
   const dataSource = data.strapiSugerenciaPopulateDeep.data.attributes;
-  const isBrowser = typeof document !== "undefined";
-  const RandExp = require("randexp");
-
-  /* const addInput = () => {
-    if (!isBrowser) {
-      return;
-    }
-    const inputsContainer = document.getElementById("Fields");
-    const removeButton = document.getElementById("Remove");
-
-    let count = inputsContainer.getElementsByTagName("div").length;
-    inputsContainer.insertAdjacentHTML(
-      "afterbegin",
-      `<div>
-        <input
-          id=${"id0" + count}
-          name="${new RandExp(/([a-z]\w{0,20})/).gen()}"
-          class="datos__file"
-          type="file"
-        />
-      </div>`
-    );
-    removeButton.disabled = false;
-  }; */
-
-  /* const removeInput = () => {
-    if (!isBrowser) {
-      return;
-    }
-
-    const inputsContainer = document.getElementById("Fields");
-    const removeButton = document.getElementById("Remove");
-
-    let count = inputsContainer.getElementsByTagName("div").length;
-    count > 1
-      ? inputsContainer.removeChild(inputsContainer.lastChild)
-      : (removeButton.disabled = true);
-  }; */
 
   return (
     <Layout>
       <Seo
         title="Maximiza - Sugerencias"
         description="Envienos sus quejas, reclamos y/o sugerencias sobre temas de nuestra competencia."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300646/maximiza/uploads/maximiza_com_ve_contacto_5d0c32ef6a.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_sugerencias_miniatura_3f6598f24d.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">
@@ -142,7 +104,7 @@ const Sugerencias = ({ data }) => {
 
             <input
               type="text"
-              name="name"
+              name="nombre"
               placeholder="Nombre y apellido"
               className="datos__input"
             />
@@ -176,7 +138,7 @@ const Sugerencias = ({ data }) => {
             />
 
             <textarea
-              name="message"
+              name="mensaje"
               className="datos__textarea"
               placeholder="Descripción"
             />
@@ -185,26 +147,11 @@ const Sugerencias = ({ data }) => {
                 Agregue la documentación que avale el contenido del mensaje.
               </small>
             </div>
-            {/* <button
-              className="datos__buttonFile datos__buttonFile-add"
-              type="button"
-              onClick={() => addInput()}
-            >
-              Añadir campo
-            </button> */}
-            {/* <button
-              id="Remove"
-              className="datos__buttonFile datos__buttonFile-remove"
-              type="button"
-              onClick={() => removeInput()}
-            >
-              Quitar campo
-            </button> */}
             <div className="datos__archivo" id="Fields">
               <div>
                 <input
                   id="id00"
-                  name="file_0"
+                  name="archivo_1"
                   className="datos__file"
                   type="file"
                 />
@@ -212,7 +159,7 @@ const Sugerencias = ({ data }) => {
               <div>
                 <input
                   id="id01"
-                  name="file_1"
+                  name="archivo_2"
                   className="datos__file"
                   type="file"
                 />
@@ -220,7 +167,7 @@ const Sugerencias = ({ data }) => {
               <div>
                 <input
                   id="id02"
-                  name="file_2"
+                  name="archivo_3"
                   className="datos__file"
                   type="file"
                 />

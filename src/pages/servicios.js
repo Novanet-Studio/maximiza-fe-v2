@@ -19,7 +19,7 @@ const Servicios = ({ data }) => {
       <Seo
         title="Maximiza inversiones en la bolsa"
         description="Ofrecemos diferentes estrategias financieras para gestionar sus inversiones  en la bolsa de valores."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300655/maximiza/uploads/maximiza_com_ve_servicios_b404e81273.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_servicios_miniatura_98daf48fa5.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

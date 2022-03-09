@@ -15,7 +15,7 @@ const Capital = ({ data }) => {
       <Seo
         title="Inversión de capital en empresas venezolanas"
         description="Sabemos que Venezuela es un gran lugar para invertir y, cuando sea el momento, será necesario el capital para reactivar el país. ¡Conoce nuestra iniciativa!"
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300646/maximiza/uploads/maximiza_com_ve_private_equity_83db007d44.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_capital_miniatura_b983816160.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">

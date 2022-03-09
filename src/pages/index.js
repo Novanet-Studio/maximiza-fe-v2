@@ -17,7 +17,7 @@ const Index = ({ data }) => {
       <Seo
         title="Maximiza Casa de Bolsa"
         description="Casa de bolsa dedicada a la asesoría financiera y a la gestión de activos transados en el mercado bursátil."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_inicio_289286fe23.jpg"
+        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847323/maximiza/v4/maximiza_inicio_miniatura_7b38641a3d.webp"
       />
       <section className="principal">
         <div className="columna columna--izq">
