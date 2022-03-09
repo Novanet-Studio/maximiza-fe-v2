@@ -17,7 +17,7 @@ const Sugerencias = ({ data }) => {
   const isBrowser = typeof document !== "undefined";
   const RandExp = require("randexp");
 
-  const addInput = () => {
+  /* const addInput = () => {
     if (!isBrowser) {
       return;
     }
@@ -30,16 +30,16 @@ const Sugerencias = ({ data }) => {
       `<div>
         <input
           id=${"id0" + count}
-          name="file"
+          name="${new RandExp(/([a-z]\w{0,20})/).gen()}"
           class="datos__file"
           type="file"
         />
       </div>`
     );
     removeButton.disabled = false;
-  };
+  }; */
 
-  const removeInput = () => {
+  /* const removeInput = () => {
     if (!isBrowser) {
       return;
     }
@@ -51,7 +51,7 @@ const Sugerencias = ({ data }) => {
     count > 1
       ? inputsContainer.removeChild(inputsContainer.lastChild)
       : (removeButton.disabled = true);
-  };
+  }; */
 
   return (
     <Layout>
@@ -182,29 +182,44 @@ const Sugerencias = ({ data }) => {
             />
             <div className="datos__archivo">
               <small>
-                Agregue un campo por cada documento que avale el contenido del
-                mensaje.
+                Agregue la documentación que avale el contenido del mensaje.
               </small>
             </div>
-            <button
+            {/* <button
               className="datos__buttonFile datos__buttonFile-add"
               type="button"
               onClick={() => addInput()}
             >
               Añadir campo
-            </button>
-            <button
+            </button> */}
+            {/* <button
               id="Remove"
               className="datos__buttonFile datos__buttonFile-remove"
               type="button"
               onClick={() => removeInput()}
             >
               Quitar campo
-            </button>
+            </button> */}
             <div className="datos__archivo" id="Fields">
               <div>
                 <input
                   id="id00"
+                  name="file"
+                  className="datos__file"
+                  type="file"
+                />
+              </div>
+              <div>
+                <input
+                  id="id01"
+                  name="file"
+                  className="datos__file"
+                  type="file"
+                />
+              </div>
+              <div>
+                <input
+                  id="id02"
                   name="file"
                   className="datos__file"
                   type="file"
