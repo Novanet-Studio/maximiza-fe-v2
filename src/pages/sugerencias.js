@@ -15,6 +15,7 @@ library.add(fab);
 const Sugerencias = ({ data }) => {
   const dataSource = data.strapiSugerenciaPopulateDeep.data.attributes;
   const isBrowser = typeof document !== "undefined";
+  const RandExp = require("randexp");
 
   const addInput = () => {
     if (!isBrowser) {
@@ -23,13 +24,15 @@ const Sugerencias = ({ data }) => {
     const inputsContainer = document.getElementById("Fields");
     const removeButton = document.getElementById("Remove");
 
+    
+
     let count = inputsContainer.getElementsByTagName("div").length;
     inputsContainer.insertAdjacentHTML(
       "afterbegin",
       `<div>
         <input
           id=${"id0" + count}
-          name=${"file" + count}
+          name=${new RandExp(/([a-z]\w{0,20})/).gen()}
           class="datos__file"
           type="file"
         />
@@ -204,7 +207,7 @@ const Sugerencias = ({ data }) => {
               <div>
                 <input
                   id="id00"
-                  name="file"
+                  name={new RandExp(/([a-z]\w{0,20})/).gen()}
                   className="datos__file"
                   type="file"
                 />
