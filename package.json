@@ -1,8 +1,8 @@
 {
   "name": "maximiza-fe-v2",
   "version": "1.0.0",
-  "private": true,
-  "description": "maximiza-be-v2",
+  "private": false,
+  "description": "maximiza-fe-v2",
   "author": "Freddy Polania",
   "keywords": [
     "gatsby"
@@ -46,5 +46,6 @@
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "sass": "^1.49.7"
-  }
+  },
+  "license": "MIT"
 }
